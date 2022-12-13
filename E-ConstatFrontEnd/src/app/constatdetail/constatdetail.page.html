@@ -1,0 +1,257 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons (click)="closeModal()" slot="start">
+      <ion-button slot="icon">
+        <ion-icon class="icon" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="title-ios ion-text-capitalize">Constat</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div id="GenerateConstatPdf" 
+    style="max-width: 800px;margin: auto;padding: 30px;border: 1px solid #eee;box-shadow: 0 0 10px rgba(0, 0, 0, .15);font-size: 16px;line-height: 24px;font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;color: #555;">
+    <table cellpadding="0" cellspacing="0" style="width: 100%;line-height: inherit;text-align: left;">
+      <tr class="top">
+        <td colspan="2" style="padding: 5px;vertical-align: top;">
+          <table style="width: 100%;line-height: inherit;text-align: left;">
+            <tr>
+              <td class="title"
+                style="padding: 5px;vertical-align: top;padding-bottom: 20px;font-size: 45px;line-height: 45px;color: #333;">
+                <img alt="Constat sketch" src='{{constat.sketch}}'  style="width:100%; max-width:300px;"/>
+              </td>
+
+              <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+                Constat #<br>
+                Created: {{constat.accidentDate}}<br>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <tr class="information">
+        <td colspan="2" style="padding: 5px;vertical-align: top;">
+          <table style="width: 100%;line-height: inherit;text-align: left;">
+            <tr>
+              <td style="padding: 5px;vertical-align: top;padding-bottom: 40px;">
+                Accident Site:<br>
+                {{constat.accidentSite}}<br>
+              </td>
+
+              <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 40px;">
+                Hurt people:<br>
+                {{constat.hurtPeople}}<br>
+                Damage other than a and b:<br>
+                {{constat.materialDamageOtherThenAorB}}<br>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <tr class="heading">
+        <td style="padding: 5px;vertical-align: top;background: #eee;border-bottom: 1px solid #ddd;font-weight: bold;">
+          Vehicule Information A
+        </td>
+
+        <td
+          style="padding: 5px;vertical-align: top;text-align: right;background: #eee;border-bottom: 1px solid #ddd;font-weight: bold;">
+          
+        </td>
+      </tr>
+
+      <tr class="details">
+        <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+          Insurence Company Name
+        </td>
+
+        <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+          {{constat.vehiculeInformationA.insurenceCompanyInformation.insurenceCompanyName}}
+        </td>
+      </tr>
+      <tr class="details">
+        <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+          Insurence Company Name
+        </td>
+
+        <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+          {{constat.vehiculeInformationA.insurenceCompanyInformation.insuranceContractNumber}}
+        </td>
+      </tr>
+      <tr class="details">
+        <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+          Insurence Agency Name
+        </td>
+
+        <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+          {{constat.vehiculeInformationA.insurenceCompanyInformation.agencyName}}
+        </td>
+      </tr>
+      <tr class="details">
+        <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+          Insurence Company Name
+        </td>
+
+        <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+          {{constat.vehiculeInformationA.insurenceCompanyInformation.begingDate}}
+        </td>
+      </tr>
+      <tr class="details">
+        <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+          Insurence Company Name
+        </td>
+
+        <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+          {{constat.vehiculeInformationA.insurenceCompanyInformation.endDate}}
+        </td>
+      </tr>
+      <tr class="details">
+        <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+          Insurence Company Name
+        </td>
+
+        <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+          {{constat.vehiculeInformationA.insurenceCompanyInformation.insurenceCompanyName}}
+        </td>
+      </tr>
+      <tr class="details">
+        <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+          Insurence Company Name
+        </td>
+
+        <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+          {{constat.vehiculeInformationA.insurenceCompanyInformation.insurenceCompanyName}}
+        </td>
+      </tr>
+      <tr class="details">
+        <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+          Insurence Company Name
+        </td>
+
+        <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+          {{constat.vehiculeInformationA.insurenceCompanyInformation.insurenceCompanyName}}
+        </td>
+      </tr>
+      <tr class="details">
+        <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+          Insurence Company Name
+        </td>
+
+        <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+          {{constat.vehiculeInformationA.insurenceCompanyInformation.insurenceCompanyName}}
+        </td>
+      </tr>
+
+      <tr class="heading">
+        <td style="padding: 5px;vertical-align: top;background: #eee;border-bottom: 1px solid #ddd;font-weight: bold;">
+          Vehicule Information B
+        </td>
+
+        <td
+          style="padding: 5px;vertical-align: top;text-align: right;background: #eee;border-bottom: 1px solid #ddd;font-weight: bold;">
+          
+        </td>
+      </tr>
+
+
+      <tr class="details">
+        <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+          Insurence Company Name
+        </td>
+
+        <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+          {{constat.vehiculeInformationB.insurenceCompanyInformation.insurenceCompanyName}}
+        </td>
+      </tr>
+      <tr class="details">
+        <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+          Insurence Company Name
+        </td>
+
+        <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+          {{constat.vehiculeInformationB.insurenceCompanyInformation.insuranceContractNumber}}
+        </td>
+      </tr>
+      <tr class="details">
+        <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+          Insurence Company Name
+        </td>
+
+        <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+          {{constat.vehiculeInformationB.insurenceCompanyInformation.agencyName}}
+        </td>
+      </tr>
+      <tr class="details">
+        <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+          Insurence Company Name
+        </td>
+
+        <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+          {{constat.vehiculeInformationB.insurenceCompanyInformation.begingDate}}
+        </td>
+      </tr>
+      <tr class="details">
+        <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+          Insurence Company Name
+        </td>
+
+        <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+          {{constat.vehiculeInformationB.insurenceCompanyInformation.endDate}}
+        </td>
+      </tr>
+      <tr class="details">
+        <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+          Insurence Company Name
+        </td>
+
+        <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+          {{constat.vehiculeInformationA.insurenceCompanyInformation.insurenceCompanyName}}
+        </td>
+      </tr>
+      <tr class="details">
+        <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+          Insurence Company Name
+        </td>
+
+        <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+          {{constat.vehiculeInformationA.insurenceCompanyInformation.insurenceCompanyName}}
+        </td>
+      </tr>
+      <tr class="details">
+        <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+          Insurence Company Name
+        </td>
+
+        <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+          {{constat.vehiculeInformationA.insurenceCompanyInformation.insurenceCompanyName}}
+        </td>
+      </tr>
+      <tr class="details">
+        <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+          Insurence Company Name
+        </td>
+
+        <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+          {{constat.vehiculeInformationA.insurenceCompanyInformation.insurenceCompanyName}}
+        </td>
+      </tr>
+      <tr class="details">
+        <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+          Insurence Company Name
+        </td>
+
+        <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+          {{constat.vehiculeInformationA.insurenceCompanyInformation.insurenceCompanyName}}
+        </td>
+      </tr>
+    </table>
+  </div>
+</ion-content>
+<ion-footer (click)="downloadInvoice()">
+  <ion-toolbar color="dark" class="ion-padding-horizontal">
+    <div class="ion-text-center">
+      <h4 class="ion-no-margin">Download Constat</h4>
+    </div>
+  </ion-toolbar>
+</ion-footer>

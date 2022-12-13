@@ -1,0 +1,7 @@
+{
+  "name": "eConstatFront",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,71 @@
+<ion-app>
+  <ion-menu side="start" contentId="main-content">
+    <ion-header>
+      <ion-toolbar color="tertiary">
+        <ion-title>Menu Content</ion-title>
+        
+      </ion-toolbar>
+      
+    </ion-header>
+    <ion-content class="ion-padding">
+      
+      <ion-list lines="none">
+				<ion-menu-toggle auto-hide="false">
+					<ion-item detail="false" [routerDirection]="'root'" routerLink="/dashboard">
+						<ion-label>
+							<ion-text color="primary">
+								Dashboard
+							</ion-text>
+						</ion-label>
+					</ion-item>
+				</ion-menu-toggle>
+        <ion-menu-toggle auto-hide="false">
+					<ion-item detail="false" [routerDirection]="'root'" routerLink="/admin">
+						<ion-label>
+							<ion-text color="primary">
+								Liste constat
+							</ion-text>
+						</ion-label>
+					</ion-item>
+				</ion-menu-toggle>
+			</ion-list>
+    </ion-content>
+  </ion-menu>
+  <div class="ion-page" id="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-item>
+          <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+          <div slot="end" style="display: flex;" (click)="configureAccount()">
+          <ion-icon name="person" ></ion-icon>
+          <ion-label >{{username}}</ion-label>
+        </div>
+          <ion-button (click)="logoutAction()" slot="end">Log Out</ion-button>
+        </ion-item>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <ion-searchbar showCancelButton="focus" [(ngModel)]="search" animated="true" placeholder="search ..."></ion-searchbar>
+      <div *ngFor="let constat of listConstat |filter:search">
+        <ion-card >
+          <div (click)="openConstatDetails(constat.id)">
+          <img alt="Constat sketch" src='{{constat.sketch}}' />
+          <ion-card-header>
+            <ion-card-title>{{constat.accidentSite}}</ion-card-title>
+            <ion-card-subtitle>{{constat.accidentDate}}</ion-card-subtitle>
+          </ion-card-header>
+        
+          <ion-card-content>
+            Here's a small text description for the card content. Nothing more, nothing less.
+          </ion-card-content>
+        </div>
+          <ion-button (click)="deleteConstat(constat.id)">Delete</ion-button>
+        </ion-card>
+      </div>
+    </ion-content>
+  </div>
+</ion-app>
+  
+

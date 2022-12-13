@@ -1,0 +1,65 @@
+<ion-app>
+  <ion-menu contentId="main-content">
+    <ion-header>
+      <ion-toolbar color="tertiary">
+        <ion-title>Menu Content</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <ion-list lines="none">
+				<ion-menu-toggle auto-hide="true">
+					<ion-item detail="false" [routerDirection]="'root'" routerLink="/dashboard">
+						<ion-label>
+							<ion-text color="primary">
+								Dashboard
+							</ion-text>
+						</ion-label>
+					</ion-item>
+				</ion-menu-toggle>
+        <ion-menu-toggle auto-hide="false">
+					<ion-item detail="false" [routerDirection]="'root'" routerLink="/admin">
+						<ion-label>
+							<ion-text color="primary">
+								Liste constat
+							</ion-text>
+						</ion-label>
+					</ion-item>
+				</ion-menu-toggle>
+			</ion-list>
+    </ion-content>
+  </ion-menu>
+  <div class="ion-page" id="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-icon name="person" slot="end"></ion-icon>
+        <ion-label slot="end">{{username}}</ion-label>
+        <ion-button (click)="logoutAction()" slot="end">Log Out</ion-button>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <ion-header [translucent]="true">
+        <ion-toolbar>
+          <ion-title>
+            Dashboard
+          </ion-title>
+        </ion-toolbar>
+      </ion-header>
+      
+      <ion-content [fullscreen]="true">
+        <div class="ion-padding">
+          <ion-card>
+            <ion-card-header>
+              Bar Chart
+            </ion-card-header>
+            <ion-card-content>
+              <canvas #barCanvas style="position: relative; height:20vh; width:40vw"></canvas>
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </ion-content>
+    </ion-content>
+  </div>
+</ion-app>
