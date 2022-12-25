@@ -40,34 +40,36 @@
     <ng-container *ngFor="let slide of slides1">
       <ion-slide>
         <div *ngIf="slide==='Accident'">
-          <ion-item>
-            <ion-label> Date d'accident</ion-label>
-            <ion-input
-              id="accidentDate"
-              class="ion-text-end"
-            ></ion-input>
-            <ion-popover trigger="accidentDate" size="cover">
-              <ng-template>
-                <ion-datetime
-                  presentation="accidentDate"
-                  [(ngModel)]="constat.accidentDate"
-                  locale="sl-SI" required 
-                ></ion-datetime>
-              </ng-template>
-            </ion-popover>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating">Lieu de l'accident</ion-label>
-            <ion-input placeholder="Enter Accident Site" [(ngModel)]="constat.accidentSite"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>Blésses</ion-label>
-            <ion-toggle slot="end" [(ngModel)]="constat.hurtPeople"></ion-toggle>
-          </ion-item>
-          <ion-item>
-            <ion-label>Dégats matériels autres qu'aux  véhicules  A et B</ion-label>
-            <ion-toggle slot="end" [(ngModel)]="constat.materialDamageOtherThenAorB"></ion-toggle>
-          </ion-item>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label position="floating">Accident Site</ion-label>
+                <ion-input placeholder="Enter Accident Site" [(ngModel)]="constat.accidentSite" #test="ngModel" required minlength="3"></ion-input>
+              </ion-item>
+              <ion-text color="danger" *ngIf="test.invalid && (test.dirty || test.touched)">
+                <span class="text-tiny">
+                  Field required
+                </span>
+              </ion-text>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label>Hurt people</ion-label>
+                <ion-toggle slot="end" [(ngModel)]="constat.hurtPeople" (ngModelChange)="onHurtPeopleOn()"></ion-toggle>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label>Material Damage Other Then A or B</ion-label>
+                <ion-toggle slot="end" [(ngModel)]="constat.materialDamageOtherThenAorB"></ion-toggle>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          
         </div>
         <div *ngIf="slide==='Insurence company A'">
           <ion-button id="open-modal" expand="block">Add witness</ion-button>
@@ -136,7 +138,7 @@
               id="begingDate"
               class="ion-text-end"
             ></ion-input>
-            <ion-popover trigger="begingDate" size="cover">
+            <ion-popover trigger="begingDate" size="cover" side="top" alignment="start" >
               <ng-template>
                 <ion-datetime
                   presentation="begingDate"
@@ -152,12 +154,12 @@
               id="endDate"
               class="ion-text-end"
             ></ion-input>
-            <ion-popover trigger="endDate" size="cover">
+            <ion-popover trigger="endDate" side="top" alignment="start" size="cover">
               <ng-template>
                 <ion-datetime
                   presentation="endDate"
                   [(ngModel)]="constat.vehiculeInformationA.insurenceCompanyInformation.endDate"
-                  locale="sl-SI" required 
+                  locale="fr-FR" required 
                 ></ion-datetime>
               </ng-template>
             </ion-popover>
@@ -304,34 +306,44 @@
                 </ion-toolbar>
               </ion-header>
               <ion-content class="ion-padding">
+                <ion-grid>
+                  <ion-col>
                 <ion-item>
                   <ion-label position="floating">Prénom</ion-label>
                   <ion-input placeholder="Enter witness First name" [(ngModel)]="witness.firstname"></ion-input>
                 </ion-item>
+              </ion-col>
+              <ion-col>
                 <ion-item>
                   <ion-label position="floating">Nom</ion-label>
                   <ion-input placeholder="Enter witness Last name" [(ngModel)]="witness.lastname"></ion-input>
-                </ion-item>
+                </ion-item></ion-col>
+                <ion-col>
                 <ion-item>
                   <ion-label position="floating">Email</ion-label>
                   <ion-input placeholder="Enter witness Email" [(ngModel)]="witness.email"></ion-input>
-                </ion-item>
+                </ion-item></ion-col>
+                <ion-col>
                 <ion-item>
                   <ion-label position="floating">Addresse</ion-label>
                   <ion-input placeholder="Enter witness Address" [(ngModel)]="witness.address"></ion-input>
-                </ion-item>
+                </ion-item></ion-col>
+                <ion-col>
                 <ion-item>
                   <ion-label position="floating">Téléphone numéro</ion-label>
                   <ion-input type="tel" placeholder="+216 11 111 111" [(ngModel)]="witness.phone"></ion-input>
-                </ion-item>
+                </ion-item></ion-col>
+                <ion-col>
                 <ion-item>
                   <ion-label>Passager avec véhicule A</ion-label>
                   <ion-toggle slot="end" [(ngModel)]="witness.passenger"></ion-toggle>
-                </ion-item>
+                </ion-item></ion-col>
+                <ion-col>
                 <ion-item>
                   <ion-label>Passager avec véhicule B</ion-label>
                   <ion-toggle slot="end"></ion-toggle>
-                </ion-item>
+                </ion-item></ion-col>
+              </ion-grid>
               </ion-content>
             </ng-template>
           </ion-modal>

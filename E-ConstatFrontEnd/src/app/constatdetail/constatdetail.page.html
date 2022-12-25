@@ -41,9 +41,9 @@
 
               <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 40px;">
                 Blessés:<br>
-                {{constat.hurtPeople}}<br>
+                {{constat.hurtPeople==true ? 'vrai':'faux'}}<br>
                 Dégats matériels autres qu'aux véhicules a et b:<br>
-                {{constat.materialDamageOtherThenAorB}}<br>
+                {{constat.materialDamageOtherThenAorB==true ? 'vrai':'faux'}}<br>
               </td>
             </tr>
           </table>
@@ -247,7 +247,7 @@
         </td>
 
         <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
-          {{constat.vehiculeInformationA.signature}}
+          {{constat.vehiculeInformationA.observation}}
         </td>
       </tr>
 

@@ -57,6 +57,7 @@ export class ConstatdetailPage implements OnInit {
         this.idConstat=this.route.snapshot.params['id'];
     this.serviceConstat.getConstatByid(this.idConstat).subscribe(c=>{
       this.constat=c;
+      console.log(this.constat);
 
     });
   }

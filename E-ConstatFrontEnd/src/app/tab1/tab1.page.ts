@@ -84,7 +84,20 @@ export class Tab1Page implements OnInit {
   confirm() {
     this.modal.dismiss(this.name, 'confirm');
   }
-
+  async onHurtPeopleOn(){
+    if(this.constat.hurtPeople===true){
+      const alert = await this.alertController.create({
+        header: 'Alert',
+        subHeader: 'Important message',
+        message: 'If people are injured please call the police 197 or 196',
+        buttons: ['OK'],
+      });
+  
+      await alert.present();
+    }
+    
+  
+  }
   onWillDismiss(event: Event) {
     const ev = event as CustomEvent<OverlayEventDetail<string>>;
     if (ev.detail.role === 'confirm') {
