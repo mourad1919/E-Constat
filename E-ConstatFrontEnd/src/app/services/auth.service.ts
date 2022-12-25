@@ -11,7 +11,7 @@ import { map } from "rxjs/operators";
 })
 export class AuthService {
 
-  host:string ="http://192.168.1.5:8081/user"
+  host:string ="http://192.168.1.3:8081/user"
   //host:string ="http://localhost:8081/user";
   token : string | null;
   public loggedUser:string;
@@ -92,7 +92,7 @@ export class AuthService {
       localStorage.removeItem('access_token');
       localStorage.removeItem('role');
       localStorage.removeItem('username');
-      this.router.navigate(['/login']);
+      this.router.navigate(['/home']);
     }
     
 

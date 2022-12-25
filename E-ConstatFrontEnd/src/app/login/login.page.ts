@@ -46,5 +46,6 @@ export class LoginPage implements OnInit {
       this.loginfail();
     });
  }
+ 
 
 }

@@ -8,9 +8,12 @@ import { VehiculeInformation } from '../model/vehicule-information';
   providedIn: 'root'
 })
 export class ConstatService {
-  host:string="http://192.168.1.5:8081/constat";
+  host:string="http://192.168.1.3:8081/constat";
   //host:string ="http://localhost:8081/constat";
   constructor(private http:HttpClient) { }
+  sendEmail(to:string,id:number){
+    return this.http.get<any>(this.host+"/sendConstatdetailsEmail/"+to+"/"+id);
+  }
   addConstat(c:Constat):Observable<number>{
     return this.http.post<number>(this.host+"/saveconstat",c);
   }
@@ -23,8 +26,8 @@ export class ConstatService {
   saveVehiculeInforamtion(vehiculeInforamtion:VehiculeInformation){
     return this.http.post<any>(this.host+"/saveVehiculeInforamtion",vehiculeInforamtion);
   }
-  saveConstatWithVehiculeInformationA(constat:Constat,id:number){
-    return this.http.post<any>(this.host+"/saveConstatWithVehiculeInformationA/"+id,constat)
+  saveConstatWithVehiculeInformationA(constat:Constat,id:number):Observable<number>{
+    return this.http.post<number>(this.host+"/saveConstatWithVehiculeInformationA/"+id,constat)
   }
   deleteConstatById(id:number){
     return this.http.delete(this.host+"/deleteconstat/"+id);

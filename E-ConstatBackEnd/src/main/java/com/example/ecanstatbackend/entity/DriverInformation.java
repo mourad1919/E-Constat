@@ -17,6 +17,7 @@ public class DriverInformation {
     private String firstname;
     private String lastname;
     private String adress;
+    private String email;
     private String licenceNumber;
     @Temporal(TemporalType.DATE)
     private Date licenceDate;

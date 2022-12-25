@@ -4,5 +4,6 @@ export class DriverInformation {
     lastname:      string;
     adress:        string;
     licenceNumber: string;
+    email: string;
     licenceDate:   Date;
 }

@@ -11,10 +11,11 @@ import { RoleToUser } from "../model/roletouser";
   providedIn: 'root'
 })
 export class UserService {
-  host:string ="http://192.168.1.5:8081/user";
+  host:string ="http://192.168.1.3:8081/user";
   //host:string ="http://localhost:8081/user";
   constructor(private http:HttpClient) { }
   addUser(user:User):Observable<User>{
+    console.log(user.password)
     return this.http.post<User>(this.host+"/saveuserwithroleuser/"+"ROLE_USER",user);
   }
   assignRoleToUser(username:string){

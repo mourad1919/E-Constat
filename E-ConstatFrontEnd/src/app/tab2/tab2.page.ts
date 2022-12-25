@@ -14,6 +14,7 @@ import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 
 import { AfterViewInit, ElementRef } from '@angular/core';
 import SignaturePad from 'signature_pad';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
@@ -24,6 +25,11 @@ export class Tab2Page {
   @ViewChild(IonModal) modal: IonModal;
   @ViewChild(IonSlides,{static:false}) ionSlides:IonSlides;
   @ViewChild(IonContent) content: IonContent;
+  text:string="Vehicule Information A";
+  text2:string="Apparant Damage A";
+  text3:string="Insured Company Information of vehicule A";
+  text4:string="Driver Information A";
+  text5:string="Insured Information A";
   idvehiculeInformationA:number=-1;
   lastid:number;
   test="test";
@@ -38,7 +44,7 @@ export class Tab2Page {
   witness:Witness;
   witnesses:Witness[]=[];
   vehiculeInforamtion:VehiculeInformation=new VehiculeInformation();
-  constructor(private serviceConstat:ConstatService,private alertController: AlertController) {}
+  constructor(private router:Router,private serviceConstat:ConstatService,private alertController: AlertController) {}
   public slidesOpts={
     allowTouchMove:false,
     autoHeight:true,
@@ -102,8 +108,13 @@ export class Tab2Page {
   }
   addConstat(){
     console.log(JSON.stringify(this.constat));
-    this.serviceConstat.addConstat(this.constat).subscribe(()=>{
+    this.serviceConstat.addConstat(this.constat).subscribe((data)=>{
       console.log(this.constat);
+      this.router.navigateByUrl("/constatdetail/"+data);
+      console.log(this.constat.vehiculeInformationA.driverInformation.email);
+      this.serviceConstat.sendEmail(this.constat.vehiculeInformationA.driverInformation.email,data).subscribe(()=>{
+
+      });
     })
   }
 
@@ -159,6 +170,12 @@ export class Tab2Page {
         this.scannedResult = result.content;
         console.log(this.scannedResult);
         this.idvehiculeInformationA=this.scannedResult;
+        console.log("***************************************");
+        this.text="Vehicule Information B";
+        this.text2="Apparant Damage B";
+        this.text3="Insured Company Information of vehicule B";
+        this.text4="Driver Information B";
+        this.text5="Insured Information B";
       }
     } catch(e) {
       console.log(e);
@@ -254,6 +271,8 @@ export class Tab2Page {
     this.constat.vehiculeInformationB=this.vehiculeInforamtion;
     this.constat.vehiculeInformationA=new VehiculeInformation();
     console.log(this.constat);
-    this.serviceConstat.saveConstatWithVehiculeInformationA(this.constat,this.idvehiculeInformationA).subscribe(()=>console.log(this.constat));
+    this.serviceConstat.saveConstatWithVehiculeInformationA(this.constat,this.idvehiculeInformationA).subscribe((data)=>{
+      this.router.navigateByUrl("/constatdetail/"+data);
+    });
   }
 }
