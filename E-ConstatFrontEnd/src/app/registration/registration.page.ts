@@ -7,7 +7,7 @@ import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.page.html',
-  styleUrls: ['./registration.page.scss'],
+  styleUrls: ['./registration.page.css'],
 })
 export class RegistrationPage implements OnInit {
   user:User=new User();

@@ -1,11 +1,19 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Welcome</ion-title>
+  <ion-toolbar style="padding: 10px 0px;">
+    <ion-title>Bienvenue</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+<div class="container">
 
-<ion-button [routerLink]="['/tabs/tab1']">1 Smartphones</ion-button>
-<ion-button [routerLink]="['/tabs/tab2']">2 Smartphones</ion-button>
+  <ion-button color="success" expand="block" [routerLink]="['/tabs/tab1']">
+    <ion-icon style="padding-right: 8px;" name="phone-portrait"></ion-icon>
+  
+    1 Smartphones</ion-button>
+  <ion-button color="success" expand="block" [routerLink]="['/tabs/tab2']">
+    <ion-icon name="phone-portrait"></ion-icon>
+    <ion-icon style="padding-right: 2px;" name="phone-portrait"></ion-icon>
+    2 Smartphones</ion-button>
+</div>
 </ion-content>

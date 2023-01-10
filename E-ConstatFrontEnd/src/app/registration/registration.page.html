@@ -7,17 +7,18 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  
+  <div class="container">
+
     <ion-item lines="full">
-      <ion-label position="floating">First name</ion-label>
+      <ion-label position="floating">Prénom</ion-label>
       <ion-input type="text" required [(ngModel)]="user.firstname"></ion-input>
     </ion-item>
     <ion-item lines="full">
-      <ion-label position="floating">Last name</ion-label>
+      <ion-label position="floating">Nom</ion-label>
       <ion-input type="text" required [(ngModel)]="user.lastname"></ion-input>
     </ion-item>
     <ion-item lines="full">
-      <ion-label position="floating">Username</ion-label>
+      <ion-label position="floating">Nom d'utilisateur</ion-label>
       <ion-input type="text" required [(ngModel)]="user.username"></ion-input>
     </ion-item>
     <ion-item lines="full">
@@ -25,13 +26,11 @@
       <ion-input type="text" required [(ngModel)]="user.email"></ion-input>
     </ion-item>
     <ion-item lines="full">
-      <ion-label position="floating">Password</ion-label>
+      <ion-label position="floating">Mot de passe</ion-label>
       <ion-input type="password" required [(ngModel)]="user.password"></ion-input>
     </ion-item>
-    <ion-row>
-      <ion-col>
-        <ion-button type="submit" color="danger" expand="block" (click)="addUser()">Sign Up</ion-button>
-      </ion-col>
-    </ion-row>
-  
+    
+    <ion-button type="submit" color="success" expand="block" (click)="addUser()">S'inscrire</ion-button>
+  </div>
+    
 </ion-content>

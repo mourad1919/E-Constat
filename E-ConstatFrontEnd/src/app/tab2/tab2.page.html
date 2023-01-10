@@ -1,35 +1,35 @@
 <ion-header [style.visibility]="content_visibility"> 
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      2 smartphones
     </ion-title>
   </ion-toolbar>
 </ion-header>
 <div class="scan-box" [style.visibility]="!content_visibility" ></div>
 <ion-content class="ion-padding" [style.visibility]="content_visibility">
-  <div class="flex justify-content-space-between ion-margin-top relative">
-    <div class="absolute full-width line"></div>
-    <div class="flex flex-column justify-content-center full-width"
+  <div  class="flex justify-content-center ion-margin-top relative" style="align-items: flex-start; flex-wrap: wrap; margin-top: -15px;">
+   
+    <div class="flex flex-column align-items-center justify-content-center" style="width: 25%; margin-top: 15px;"
       *ngFor="let slide of slides; let index = index; let first = first; let last = last;">
-      <span [ngClass]="{ 'align-self-end': last, 'align-self-center': (!first && !last) }"
-        class="flex flex-column align-items-center justify-content-center bold text-medium radius"
-        style="width: 30px; height: 30px;"
+      <div 
+        class="flex flex-column align-items-center justify-content-center bold text-medium "
+        style="width: 30px; height: 30px; border-radius: 15px;"
         [style.background]="slide === currentSlide ? 'var(--ion-color-primary)':'var(--ion-color-light-shade)'"
         [style.color]="slide === currentSlide ? 'var(--ion-color-light)':'var(--ion-color-dark)'"
-        [ngClass]="{ 'align-self-end': last, 'align-self-center': (!first && !last) }">
+        >
         {{ index + 1 }}
-      </span>
-      <span [style.color]="slide === currentSlide ? 'var(--ion-color-primary)':'var(--ion-color-medium)'"
-        [ngClass]="{ 'align-self-end': last, 'align-self-center': (!first && !last) }"
-        class="flex text-medium bold ion-margin-vertical">
+  </div>
+      <div [style.color]="slide === currentSlide ? 'var(--ion-color-primary)':'var(--ion-color-medium)'"
+        
+      class="step-title">
         {{ slide }}
-      </span>
+</div>
     </div>
   </div>
   <ion-slides [options]="slidesOpts"  (ionSlideDidChange)="onSlideDidChange()" (ionSlideWillChange)="onSlideWillChange()">
     <ng-container *ngFor="let slide of slides">
       <ion-slide>
-        <div *ngIf="slide==='Accident'">
+        <div style="width: 100%;" *ngIf="slide==='Accident'">
           <ion-row>
             <ion-col>
               <ion-item>
@@ -46,7 +46,7 @@
           <ion-row>
             <ion-col>
               <ion-item>
-                <ion-label>Hurt people</ion-label>
+                <ion-label>Blessé(s)</ion-label>
                 <ion-toggle slot="end" [(ngModel)]="constat.hurtPeople" (ngModelChange)="onHurtPeopleOn()"></ion-toggle>
               </ion-item>
             </ion-col>
@@ -54,36 +54,36 @@
           <ion-row>
             <ion-col>
               <ion-item>
-                <ion-label>Material Damage Other Then A or B</ion-label>
+                <ion-label>Dégats matériels</ion-label>
                 <ion-toggle slot="end" [(ngModel)]="constat.materialDamageOtherThenAorB"></ion-toggle>
               </ion-item>
             </ion-col>
           </ion-row>
           
         </div>
-        <div *ngIf="slide==='Insurence company'">
-          <ion-button id="open-modal" expand="block">Add witness</ion-button>
+        <div *ngIf="slide==='Compagnie Assurance'">
+          <ion-button id="open-modal" expand="block">Ajouter témoins</ion-button>
           <p>{{ message }}</p>
           <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
             <ng-template>
               <ion-header>
                 <ion-toolbar>
                   <ion-buttons slot="start">
-                    <ion-button (click)="cancel()">Cancel</ion-button>
+                    <ion-button (click)="cancel()">Annuler</ion-button>
                   </ion-buttons>
                   <ion-title>Welcome</ion-title>
                   <ion-buttons slot="end">
-                    <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+                    <ion-button (click)="confirm()" [strong]="true">Confirmer</ion-button>
                   </ion-buttons>
                 </ion-toolbar>
               </ion-header>
               <ion-content class="ion-padding">
                 <ion-item>
-                  <ion-label position="floating">First name</ion-label>
+                  <ion-label position="floating">Prénom</ion-label>
                   <ion-input placeholder="Enter witness First name" [(ngModel)]="witness.firstname"></ion-input>
                 </ion-item>
                 <ion-item>
-                  <ion-label position="floating">Last name</ion-label>
+                  <ion-label position="floating">Nom</ion-label>
                   <ion-input placeholder="Enter witness Last name" [(ngModel)]="witness.lastname"></ion-input>
                 </ion-item>
                 <ion-item>
@@ -91,19 +91,19 @@
                   <ion-input placeholder="Enter witness Email" [(ngModel)]="witness.email"></ion-input>
                 </ion-item>
                 <ion-item>
-                  <ion-label position="floating">Address</ion-label>
+                  <ion-label position="floating">Addresse</ion-label>
                   <ion-input placeholder="Enter witness Address" [(ngModel)]="witness.address"></ion-input>
                 </ion-item>
                 <ion-item>
-                  <ion-label position="floating">Telephone input</ion-label>
+                  <ion-label position="floating">Telephone numéro</ion-label>
                   <ion-input type="tel" placeholder="+216 11 111 111" [(ngModel)]="witness.phone"></ion-input>
                 </ion-item>
                 <ion-item>
-                  <ion-label>Passenger with vehicule A</ion-label>
+                  <ion-label>Passager avec vehicule A</ion-label>
                   <ion-toggle slot="end" [(ngModel)]="witness.passenger"></ion-toggle>
                 </ion-item>
                 <ion-item>
-                  <ion-label>Passenger with vehicule B</ion-label>
+                  <ion-label>Passager avec vehicule B</ion-label>
                   <ion-toggle slot="end"></ion-toggle>
                 </ion-item>
               </ion-content>
@@ -113,7 +113,7 @@
           <ion-row>
             <ion-col>
               <ion-item>
-                <ion-label position="floating">Insurence Company Name</ion-label>
+                <ion-label position="floating">Sociéte d'assurance</ion-label>
                 <ion-input placeholder="Enter Insurence Company Name" [(ngModel)]="vehiculeInforamtion.insurenceCompanyInformation.insurenceCompanyName" #icn="ngModel" required minlength="2"></ion-input>
               </ion-item>
               <ion-text color="danger" *ngIf="icn.invalid && (icn.dirty || icn.touched)">
@@ -126,7 +126,7 @@
           <ion-row>
             <ion-col>
               <ion-item>
-                <ion-label position="floating">Insurance Contract Number</ion-label>
+                <ion-label position="floating">Contrat d'assurance N°</ion-label>
                 <ion-input placeholder="Enter Insurance Contract Number" [(ngModel)]="vehiculeInforamtion.insurenceCompanyInformation.insuranceContractNumber" #iccn="ngModel" required minlength="10" maxlength="12"></ion-input>
               </ion-item>
               <ion-text color="danger" *ngIf="iccn.invalid && (iccn.dirty || iccn.touched)">
@@ -139,7 +139,7 @@
           <ion-row>
             <ion-col>
               <ion-item>
-                <ion-label position="floating">Agency Name</ion-label>
+                <ion-label position="floating">Agence</ion-label>
                 <ion-input placeholder="Enter Agency Name" [(ngModel)]="vehiculeInforamtion.insurenceCompanyInformation.agencyName" #ican="ngModel" required minlength="2"> </ion-input>
               </ion-item>
               <ion-text color="danger" *ngIf="ican.invalid && (ican.dirty || ican.touched)">
@@ -152,7 +152,7 @@
           <ion-row>
             <ion-col>
               <ion-item>
-                <ion-label>Begin Date</ion-label>
+                <ion-label>Date début</ion-label>
                 <ion-input
                   id="begindate"
                   class="ion-text-end"
@@ -174,7 +174,7 @@
           <ion-row>
             <ion-col>
               <ion-item>
-                <ion-label>End Date</ion-label>
+                <ion-label>Date fin</ion-label>
                 <ion-input
                   id="enddate"
                   class="ion-text-end"
@@ -193,12 +193,12 @@
             </ion-col>
           </ion-row>
         </div>
-        <div *ngIf="slide==='Driver'">
+        <div *ngIf="slide==='Conducteur'">
           <h1>{{text4}}</h1>
           <ion-row>
             <ion-col>
               <ion-item>
-                <ion-label position="floating">First name</ion-label>
+                <ion-label position="floating">Prénom</ion-label>
                 <ion-input placeholder="Enter driver First name" [(ngModel)]="vehiculeInforamtion.driverInformation.firstname" #difn="ngModel"></ion-input>
               </ion-item>
               <ion-text color="danger" *ngIf="difn.invalid && (difn.dirty || difn.touched)">
@@ -209,7 +209,7 @@
             </ion-col>
             <ion-col>
               <ion-item>
-                <ion-label position="floating">Last name</ion-label>
+                <ion-label position="floating">Nom</ion-label>
                 <ion-input placeholder="Enter driver Last name" [(ngModel)]="vehiculeInforamtion.driverInformation.lastname" #diln="ngModel"></ion-input>
               </ion-item>
               <ion-text color="danger" *ngIf="diln.invalid && (diln.dirty || diln.touched)">
@@ -236,7 +236,7 @@
           <ion-row>
             <ion-col>
               <ion-item>
-                <ion-label position="floating">Address</ion-label>
+                <ion-label position="floating">Addresse</ion-label>
                 <ion-input placeholder="Enter driver Address" [(ngModel)]="vehiculeInforamtion.driverInformation.adress" #dia="ngModel"></ion-input>
               </ion-item>
               <ion-text color="danger" *ngIf="dia.invalid && (dia.dirty || dia.touched)">
@@ -249,7 +249,7 @@
           <ion-row>
             <ion-col>
               <ion-item>
-                <ion-label position="floating">Licence Number</ion-label>
+                <ion-label position="floating">Permis de conduire N°</ion-label>
                 <ion-input placeholder="Enter driver Licence Number" [(ngModel)]="vehiculeInforamtion.driverInformation.licenceNumber" #dilnb="ngModel"></ion-input>
               </ion-item>
               <ion-text color="danger" *ngIf="dilnb.invalid && (dilnb.dirty || dilnb.touched)">
@@ -263,7 +263,7 @@
           <ion-row>
             <ion-col>
               <ion-item>
-                <ion-label>Licence Date</ion-label>
+                <ion-label>Délivré le</ion-label>
                 <ion-input
                   id="licencedate"
                   class="ion-text-end"
@@ -282,12 +282,12 @@
             </ion-col>
           </ion-row>
         </div>
-        <div *ngIf="slide==='Insured'">
+        <div *ngIf="slide==='Assuré'">
           <h1>{{text5}}</h1>
           <ion-row>
             <ion-col>
               <ion-item>
-                <ion-label position="floating">First name</ion-label>
+                <ion-label position="floating">Prénom</ion-label>
                 <ion-input placeholder="Enter Insured First name" [(ngModel)]="vehiculeInforamtion.insuredInforamation.firstname" #iifn="ngModel"></ion-input>
               </ion-item>
               <ion-text color="danger" *ngIf="iifn.invalid && (iifn.dirty || iifn.touched)">
@@ -298,7 +298,7 @@
             </ion-col>
             <ion-col>
               <ion-item>
-                <ion-label position="floating">Last name</ion-label>
+                <ion-label position="floating">Nom</ion-label>
                 <ion-input placeholder="Enter Insured Last name" [(ngModel)]="vehiculeInforamtion.insuredInforamation.lastname" #iiln="ngModel"></ion-input>
               </ion-item>
               <ion-text color="danger" *ngIf="iiln.invalid && (iiln.dirty || iiln.touched)">
@@ -313,7 +313,7 @@
           <ion-row>
             <ion-col>
               <ion-item>
-                <ion-label position="floating">Address</ion-label>
+                <ion-label position="floating">Addresse</ion-label>
                 <ion-input placeholder="Enter Insured Address" [(ngModel)]="vehiculeInforamtion.insuredInforamation.adress" #iia="ngModel"></ion-input>
               </ion-item>
               <ion-text color="danger" *ngIf="iia.invalid && (iia.dirty || iia.touched)">
@@ -327,7 +327,7 @@
           <ion-row>
             <ion-col>
               <ion-item>
-                <ion-label position="floating">Telephone input</ion-label>
+                <ion-label position="floating">Téléphone N°</ion-label>
                 <ion-input type="tel" placeholder="+216 11 111 111" [(ngModel)]="vehiculeInforamtion.insuredInforamation.phone" required #iip="ngModel"></ion-input>
               </ion-item>
 
@@ -343,7 +343,7 @@
           <ion-row>
             <ion-col>
               <ion-item>
-                <ion-label position="floating">Brand</ion-label>
+                <ion-label position="floating">Marque</ion-label>
                 <ion-input placeholder="Enter vehicule brand" [(ngModel)]="vehiculeInforamtion.vehicule.brand" required #vivb="ngModel"> </ion-input>
               </ion-item>
               <ion-text color="danger" *ngIf="vivb.invalid && (vivb.dirty || vivb.touched)">
@@ -368,7 +368,7 @@
           <ion-row>
             <ion-col>
               <ion-item>
-                <ion-label position="floating">Vehicule plate</ion-label>
+                <ion-label position="floating">Immatriculation</ion-label>
                 <ion-input placeholder="Enter vehicule plate" [(ngModel)]="vehiculeInforamtion.vehicule.carPlate" #vivp="ngModel"></ion-input>
               </ion-item>
               <ion-text color="danger" *ngIf="vivp.invalid && (vivp.dirty || vivp.touched)">
@@ -396,44 +396,53 @@
         <div *ngIf="slide==='Damage'">
           <h1>{{text2}}</h1>
           <ion-list>
-            <ion-radio-group [allowEmptySelection]="true" value="turtles" [(ngModel)]="vehiculeInforamtion.apperantDamage">
+            <ion-radio-group [allowEmptySelection]="true" value="chocs" [(ngModel)]="constat.vehiculeInformationA.apperantDamage">
               <ion-item>
-                <ion-label>Dogs</ion-label>
-                <ion-radio slot="end" value="dogs"></ion-radio>
+                <ion-label>coté avant droit</ion-label>
+                <ion-radio slot="end" value="pare à choc Ad"></ion-radio>
               </ion-item>
           
               <ion-item>
-                <ion-label>Cats</ion-label>
-                <ion-radio slot="end" value="cats"></ion-radio>
+                <ion-label> coté gauche</ion-label>
+                <ion-radio slot="end" value="pare à choc Ag"></ion-radio>
               </ion-item>
           
               <ion-item>
-                <ion-label>Turtles</ion-label>
-                <ion-radio slot="end" value="turtles"></ion-radio>
+                <ion-label> choc avant</ion-label>
+                <ion-radio slot="end" value="pare à choc AM"></ion-radio>
               </ion-item>
           
               <ion-item>
-                <ion-label>Fish</ion-label>
-                <ion-radio slot="end" value="fish"></ion-radio>
+                <ion-label>coté droit </ion-label>
+                <ion-radio slot="end" value="cote droit avant"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Arrière Droit</ion-label>
+                <ion-radio slot="end" value="cote droit arriére"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Arrière </ion-label>
+                <ion-radio slot="end" value="cote arriére"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Arrière gauche </ion-label>
+                <ion-radio slot="end" value="cote arrière gauche"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>coté gauche </ion-label>
+                <ion-radio slot="end" value="cote gauche "></ion-radio>
               </ion-item>
             </ion-radio-group>
           </ion-list>
-          <ion-row>
-            <ion-col>
-              <ion-item>
-                <ion-label position="floating">Observation</ion-label>
-                <ion-input placeholder="Enter Observation " [(ngModel)]="vehiculeInforamtion.observation" #vio="ngModel"></ion-input>
-              </ion-item>
-              <ion-text color="danger" *ngIf="vio.invalid && (vio.dirty || vio.touched)">
-                <span class="text-tiny">
-                  Field required
-                </span>
-              </ion-text>
-            </ion-col>
-          </ion-row>
+          <ion-item>
+            <ion-label position="floating">Observation</ion-label>
+            <ion-input placeholder="Enter Observation " [(ngModel)]="constat.vehiculeInformationA.observation"></ion-input>
+          </ion-item>
+          <img src="assets/icon/car choc.png" alt="car choc">
+
           
         </div>
-        <div *ngIf="slide==='Sketch'">
+        <div *ngIf="slide==='Croquis'">
           <h3>Sketch</h3>
           
           <div>
@@ -463,10 +472,10 @@
               <ion-grid>
                 <ion-row>
                   <ion-col size="6">
-                    <ion-button color="danger" (click)="clearPadSignature()">Clear</ion-button>
+                    <ion-button color="danger" (click)="clearPadSignature()">Effacer</ion-button>
                   </ion-col>
                   <ion-col size="4" offset="2">
-                    <ion-button color="secondary" (click)="savePadSignature()">Save</ion-button>
+                    <ion-button color="secondary" (click)="savePadSignature()">Enregistrer</ion-button>
                   </ion-col>
                 </ion-row>
               </ion-grid>
@@ -480,10 +489,10 @@
   <ion-toolbar>
     <div class="full-width flex align-items-center justify-content-space-between">
       <ion-button [style.visibility]="(isBeginning) ? 'hidden' :''" (click)="onBack()" color="dark" strong shape="round">
-        <span>Back</span>
+        <span>Retour</span>
       </ion-button>
       <ion-button color="primary" [style.visibility]="(isEnding) ? 'hidden' :''" (click)="onNext()" [style.visibility]="content_visibility" strong shape="round">
-        <span>Next</span>
+        <span>Suivant</span>
       </ion-button>
       
     </div>
@@ -494,14 +503,14 @@
     </div>
     <div *ngIf="isEnding==true && idvehiculeInformationA!=-1">
       <ion-button color="primary"  expand="block" (click)="saveConstat()" strong shape="round">
-        <span>Save Constat</span>
+        <span>Enregister Constat</span>
       </ion-button>
     </div>
     <ion-modal [isOpen]="isModalOpenQrCodeGenerator">
       <ng-template>
         <ion-header>
           <ion-toolbar>
-            <ion-title>Qr CODE GENRATOR</ion-title>
+            <ion-title>Qr CODE GENRATEUR</ion-title>
             <ion-buttons slot="end">
               <ion-button (click)="setOpenQrCodeGenerator(false)">Close</ion-button>
             </ion-buttons>
@@ -514,7 +523,7 @@
     </ion-modal>
     <div *ngIf="isBeginning==true">
       <ion-button color="primary" expand="block"  (click)="startScan()" [style.visibility]="content_visibility" strong shape="round">
-        <span>Scan qrCode</span>
+        <span>Scanner qrCode</span>
       </ion-button>
     </div>
     <div *ngIf="content_visibility==='hidden'">

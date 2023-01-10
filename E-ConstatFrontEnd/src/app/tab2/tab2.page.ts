@@ -18,18 +18,18 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss']
+  styleUrls: ['tab2.page.css']
 })
 export class Tab2Page {
 
   @ViewChild(IonModal) modal: IonModal;
   @ViewChild(IonSlides,{static:false}) ionSlides:IonSlides;
   @ViewChild(IonContent) content: IonContent;
-  text:string="Vehicule Information A";
-  text2:string="Apparant Damage A";
-  text3:string="Insured Company Information of vehicule A";
-  text4:string="Driver Information A";
-  text5:string="Insured Information A";
+  text:string="Information sur les véhicules A";
+  text2:string="Damage  A";
+  text3:string="Compagnie Assurance A";
+  text4:string="Conducteur A";
+  text5:string="Assuré A";
   idvehiculeInformationA:number=-1;
   lastid:number;
   test="test";
@@ -38,7 +38,7 @@ export class Tab2Page {
   currentSlide:string;
   slides:string[];
   circumstances:string[]=['EN_STATIONNEMENT','QUITTAI_UN_STATIONNEMENT'];
-  message = 'You can add witness anytime by clicking this button';
+  message = 'Vous pouvez ajouter un témoin à tout moment en cliquant sur ce bouton';
   name: string;
   constat:Constat;
   witness:Witness;
@@ -50,7 +50,7 @@ export class Tab2Page {
     autoHeight:true,
   };
   buildSlides(){
-    const slides=['Accident','Insurence company','Driver','Insured','Damage','Sketch','Signature'];
+    const slides=['Accident','Compagnie Assurance','Conducteur','Assuré','Damage','Croquis','Signature'];
     this.currentSlide=slides[0];
     this.slides=slides;
   }
@@ -171,11 +171,11 @@ export class Tab2Page {
         console.log(this.scannedResult);
         this.idvehiculeInformationA=this.scannedResult;
         console.log("***************************************");
-        this.text="Vehicule Information B";
-        this.text2="Apparant Damage B";
-        this.text3="Insured Company Information of vehicule B";
-        this.text4="Driver Information B";
-        this.text5="Insured Information B";
+        this.text="Information sur les véhicules B";
+        this.text2="Damage  B";
+        this.text3="Compagnie Assurance  B";
+        this.text4="Conducteur  B";
+        this.text5="Assuré  B";
       }
     } catch(e) {
       console.log(e);
@@ -221,7 +221,7 @@ export class Tab2Page {
     this.signaturePad = new SignaturePad(this.canvasEl.nativeElement);
     
   }
-/*****************SKETCH */
+/*****************Croquis */
   isSignature:boolean=false;
   isSignatureSaved:boolean=false;
   startDrawing(event: Event) {

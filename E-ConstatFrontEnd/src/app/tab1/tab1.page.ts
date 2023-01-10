@@ -20,10 +20,11 @@ import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.scss']
+  styleUrls: ['tab1.page.css']
 })
 export class Tab1Page implements OnInit {
   @ViewChild(IonModal) modal: IonModal;
+  @ViewChild(IonModal) modal2: IonModal;
   @ViewChild(IonSlides,{static:false}) ionSlides:IonSlides;
   @ViewChild(IonContent) content: IonContent;
   isBeginning:boolean=true;
@@ -40,9 +41,9 @@ export class Tab1Page implements OnInit {
   witness:Witness;
   witnesses:Witness[]=[];
   currentSlideIndex:number=0;
-  slide1=['Accident','Insurence company A','Driver A','Insured A'];
-  slide2=['Damage A','Insurence company B','Driver B','Insured B'];
-  slide3=['Damage B','Sketch'];
+  slide1=['Accident','Compagnie Assurance A','Conducteur A','Assuré A'];
+  slide2=['Damage A','Compagnie Assurance B','Conducteur B','Assuré B'];
+  slide3=['Damage B','Validation'];
   constructor(private router:Router,private alertController: AlertController,private serviceUser:UserService, private serviceConstat:ConstatService,private serviceAuth:AuthService) {}
   public slidesOpts={
     allowTouchMove:false,
@@ -54,7 +55,7 @@ export class Tab1Page implements OnInit {
   }
   //** */
   buildSlides(){
-    const slides1=['Accident','Insurence company A','Driver A','Insured A','Damage A','Insurence company B','Driver B','Insured B','Damage B','Sketch'];
+    const slides1=['Accident','Compagnie Assurance A','Conducteur A','Assuré A','Damage A','Compagnie Assurance B','Conducteur B','Assuré B','Damage B','Validation'];
     
     this.currentSlide=this.slide1[0];
     this.slides=this.slide1;
@@ -84,6 +85,13 @@ export class Tab1Page implements OnInit {
   confirm() {
     this.modal.dismiss(this.name, 'confirm');
   }
+  cancel2() {
+    this.modal2.dismiss(null, 'cancel');
+  }
+
+  confirm2() {
+    this.modal2.dismiss(this.name, 'confirm');
+  }
   async onHurtPeopleOn(){
     if(this.constat.hurtPeople===true){
       const alert = await this.alertController.create({
@@ -99,6 +107,12 @@ export class Tab1Page implements OnInit {
   
   }
   onWillDismiss(event: Event) {
+    const ev = event as CustomEvent<OverlayEventDetail<string>>;
+    if (ev.detail.role === 'confirm') {
+      this.message = `Hello, ${ev.detail.data}!`;
+    }
+  }
+  onWillDismiss2(event: Event) {
     const ev = event as CustomEvent<OverlayEventDetail<string>>;
     if (ev.detail.role === 'confirm') {
       this.message = `Hello, ${ev.detail.data}!`;

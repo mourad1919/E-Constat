@@ -16,3 +16,8 @@ canvas {
   transform: translate(-50%,-50%);
   width: 300px;
  }
+
+ .step-title{
+  text-align: center;
+  margin-top: 10px;
+}

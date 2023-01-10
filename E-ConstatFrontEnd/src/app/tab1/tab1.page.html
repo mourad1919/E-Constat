@@ -1,62 +1,64 @@
-<ion-header [translucent]="true">
-  <ion-header>
-    <ion-toolbar>
+  <ion-header style="padding: 10px 0px; background-color: white !important;">
+    <ion-toolbar >
       <ion-item>
-        <ion-button slot="start" [routerLink]="['/welcome']">Retour</ion-button>
-        <div slot="end" style="display: flex;" (click)="configureAccount()">
-        <ion-icon name="person" ></ion-icon>
-        <ion-label >{{username}}</ion-label>
-      </div>
-        <ion-button (click)="logoutAction()" slot="end">Déconnexion</ion-button>
+        <ion-button  slot="start" [routerLink]="['/welcome']">Retour</ion-button>
+        <div slot="end" style="display: flex;" class="test" (click)="configureAccount()">
+        <ion-icon  name="person" style="margin-right: 2px;" ></ion-icon>
+        <ion-label  >{{username}}</ion-label>
+        <ion-button  color="danger" (click)="logoutAction()" >Déconnexion</ion-button>
+
+        </div>
       </ion-item>
     </ion-toolbar>
   </ion-header>
-</ion-header>
+
 
 
 <ion-content>
-  <div class="flex justify-content-space-between ion-margin-top relative">
-    <div class="absolute full-width line"></div>
-    <div class="flex flex-column justify-content-center full-width"
-      *ngFor="let slide of slides; let index = index; let first = first; let last = last;">
+  <div class="container">
+
+    <div class="flex steps justify-content-space-between ion-margin-top relative">
       
-        <span [ngClass]="{ 'align-self-end': last, 'align-self-center': (!first && !last) }"
-          class="flex flex-column align-items-center justify-content-center bold text-medium radius"
-          style="width: 30px; height: 30px;"
-          [style.background]="slide === currentSlide ? 'var(--ion-color-primary)':'var(--ion-color-light-shade)'"
-          [style.color]="slide === currentSlide ? 'var(--ion-color-light)':'var(--ion-color-dark)'"
-          [ngClass]="{ 'align-self-end': last, 'align-self-center': (!first && !last) }">
-          {{ index + 1 }}
-        </span>
-        <span [style.color]="slide === currentSlide ? 'var(--ion-color-primary)':'var(--ion-color-medium)'"
-          [ngClass]="{ 'align-self-end': last, 'align-self-center': (!first && !last) }"
-          class="flex text-medium bold ion-margin-vertical">
-          {{ slide }}
-        </span>
+      <div class="flex flex-column justify-content-center full-width" style=" flex-direction: column; display: flex; align-items: center;"
+      *ngFor="let slide of slides; let index = index; let first = first; let last = last;">
+     
+
+        <div 
+        class="flex flex-column align-items-center justify-content-center bold text-medium "
+        style="width: 30px; height: 30px; border-radius: 15px;"
+        [style.background]="slide === currentSlide ? 'var(--ion-color-primary)':'var(--ion-color-light-shade)'"
+        [style.color]="slide === currentSlide ? 'var(--ion-color-light)':'var(--ion-color-dark)'"
+       >
+        {{ index + 1 }}
     </div>
+      <div [style.color]="slide === currentSlide ? 'var(--ion-color-primary)':'var(--ion-color-medium)'"
+     
+      class="step-title">
+      {{ slide }}
   </div>
-  
-  <ion-slides [options]="slidesOpts"  (ionSlideDidChange)="onSlideDidChange()" (ionSlideWillChange)="onSlideWillChange()">
-    <ng-container *ngFor="let slide of slides1">
-      <ion-slide>
-        <div *ngIf="slide==='Accident'">
-          <ion-row>
-            <ion-col>
-              <ion-item>
-                <ion-label position="floating">Accident Site</ion-label>
-                <ion-input placeholder="Enter Accident Site" [(ngModel)]="constat.accidentSite" #test="ngModel" required minlength="3"></ion-input>
-              </ion-item>
+    
+</div>
+</div>
+
+<ion-slides [options]="slidesOpts"  (ionSlideDidChange)="onSlideDidChange()" (ionSlideWillChange)="onSlideWillChange()">
+  <ng-container *ngFor="let slide of slides1">
+    <ion-slide >
+      <div style="width: 100%;" *ngIf="slide==='Accident'">
+        
+            <ion-item>
+              <ion-label position="floating">Lieu d'accident</ion-label>
+              <ion-input placeholder="Enter Accident Site" [(ngModel)]="constat.accidentSite" #test="ngModel" required minlength="3"></ion-input>
+            </ion-item>
               <ion-text color="danger" *ngIf="test.invalid && (test.dirty || test.touched)">
                 <span class="text-tiny">
                   Field required
                 </span>
               </ion-text>
-            </ion-col>
-          </ion-row>
+          
           <ion-row>
             <ion-col>
               <ion-item>
-                <ion-label>Hurt people</ion-label>
+                <ion-label>Blessé(s)</ion-label>
                 <ion-toggle slot="end" [(ngModel)]="constat.hurtPeople" (ngModelChange)="onHurtPeopleOn()"></ion-toggle>
               </ion-item>
             </ion-col>
@@ -64,15 +66,15 @@
           <ion-row>
             <ion-col>
               <ion-item>
-                <ion-label>Material Damage Other Then A or B</ion-label>
+                <ion-label>Dégats matériels </ion-label>
                 <ion-toggle slot="end" [(ngModel)]="constat.materialDamageOtherThenAorB"></ion-toggle>
               </ion-item>
             </ion-col>
           </ion-row>
           
         </div>
-        <div *ngIf="slide==='Insurence company A'">
-          <ion-button id="open-modal" expand="block">Add witness</ion-button>
+        <div *ngIf="slide==='Compagnie Assurance A'">
+          <ion-button id="open-modal" expand="block">Témoins</ion-button>
           <p>{{ message }}</p>
           <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
             <ng-template>
@@ -81,7 +83,7 @@
                   <ion-buttons slot="start">
                     <ion-button (click)="cancel()">Cancel</ion-button>
                   </ion-buttons>
-                  <ion-title>Bienvenu</ion-title>
+                  <ion-title>Bienvenue</ion-title>
                   <ion-buttons slot="end">
                     <ion-button (click)="confirm()" [strong]="true">Confirmer</ion-button>
                   </ion-buttons>
@@ -108,11 +110,11 @@
                   <ion-label position="floating">Numéro Téléphone </ion-label>
                   <ion-input type="tel" placeholder="+216 11 111 111" [(ngModel)]="witness.phone"></ion-input>
                 </ion-item>
-                <ion-item>
+                <ion-item style="margin-top: 20px;">
                   <ion-label>Passager avec véhicule A</ion-label>
                   <ion-toggle slot="end" [(ngModel)]="witness.passenger"></ion-toggle>
                 </ion-item>
-                <ion-item>
+                <ion-item style="margin-top: 20px;">
                   <ion-label>Passager avec véhicule B</ion-label>
                   <ion-toggle slot="end"></ion-toggle>
                 </ion-item>
@@ -120,18 +122,6 @@
             </ng-template>
           </ion-modal>
           <h1>Société d'assurance</h1>
-          <ion-item>
-            <ion-label position="floating">Véhicule assuré par</ion-label>
-            <ion-input placeholder="Enter Insurence Company Name" [(ngModel)]="constat.vehiculeInformationA.insurenceCompanyInformation.insurenceCompanyName"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating">contrat d'assurance numéro</ion-label>
-            <ion-input placeholder="Enter Insurance Contract Number" [(ngModel)]="constat.vehiculeInformationA.insurenceCompanyInformation.insuranceContractNumber"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating">Agence</ion-label>
-            <ion-input placeholder="Enter Agency Name" [(ngModel)]="constat.vehiculeInformationA.insurenceCompanyInformation.agencyName"></ion-input>
-          </ion-item>
           <ion-item>
             <ion-label>date début</ion-label>
             <ion-input
@@ -144,28 +134,41 @@
                   presentation="begingDate"
                   [(ngModel)]="constat.vehiculeInformationA.insurenceCompanyInformation.begingDate"
                   locale="sl-SI" required 
+                  ></ion-datetime>
+                </ng-template>
+              </ion-popover>
+            </ion-item>
+            <ion-item style="margin-top: 20px;">
+            <ion-label>Date fin</ion-label>
+            <ion-input
+              id="endDate"
+              class="ion-text-end"
+              ></ion-input>
+              <ion-popover trigger="endDate" side="top" alignment="start" size="cover">
+              <ng-template>
+                <ion-datetime
+                presentation="endDate"
+                [(ngModel)]="constat.vehiculeInformationA.insurenceCompanyInformation.endDate"
+                locale="fr-FR" required 
                 ></ion-datetime>
               </ng-template>
             </ion-popover>
           </ion-item>
           <ion-item>
-            <ion-label>Date fin</ion-label>
-            <ion-input
-              id="endDate"
-              class="ion-text-end"
-            ></ion-input>
-            <ion-popover trigger="endDate" side="top" alignment="start" size="cover">
-              <ng-template>
-                <ion-datetime
-                  presentation="endDate"
-                  [(ngModel)]="constat.vehiculeInformationA.insurenceCompanyInformation.endDate"
-                  locale="fr-FR" required 
-                ></ion-datetime>
-              </ng-template>
-            </ion-popover>
+            <ion-label position="floating">Véhicule assuré par</ion-label>
+            <ion-input placeholder="Enter Insurence Company Name" [(ngModel)]="constat.vehiculeInformationA.insurenceCompanyInformation.insurenceCompanyName"></ion-input>
           </ion-item>
+          <ion-item>
+            <ion-label position="floating">contrat d'assurance numéro</ion-label>
+            <ion-input placeholder="Enter Insurance Contract Number" [(ngModel)]="constat.vehiculeInformationA.insurenceCompanyInformation.insuranceContractNumber"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Agence</ion-label>
+            <ion-input placeholder="Enter Agency Name" [(ngModel)]="constat.vehiculeInformationA.insurenceCompanyInformation.agencyName"></ion-input>
+          </ion-item>
+          
         </div>
-        <div *ngIf="slide==='Driver A'">
+        <div *ngIf="slide==='Conducteur A'">
           <h1>Idéntité du conducteur</h1>
           <ion-item>
             <ion-label position="floating">Prénom</ion-label>
@@ -176,18 +179,10 @@
             <ion-input placeholder="Enter driver Last name" [(ngModel)]="constat.vehiculeInformationA.driverInformation.lastname"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-label position="floating">Email</ion-label>
-            <ion-input placeholder="Enter driver Email" [(ngModel)]="constat.vehiculeInformationA.driverInformation.email"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating">Addresse</ion-label>
-            <ion-input placeholder="Enter driver Address" [(ngModel)]="constat.vehiculeInformationA.driverInformation.adress"></ion-input>
-          </ion-item>
-          <ion-item>
             <ion-label position="floating">Permis du conduire numéro</ion-label>
             <ion-input placeholder="Enter driver Licence Number" [(ngModel)]="constat.vehiculeInformationA.driverInformation.licenceNumber"></ion-input>
           </ion-item>
-          <ion-item>
+          <ion-item style="margin-top: 20px;">
             <ion-label>Délivrée le</ion-label>
             <ion-input
               id="licenceDate"
@@ -196,15 +191,24 @@
             <ion-popover trigger="licenceDate" size="cover">
               <ng-template>
                 <ion-datetime
-                  presentation="licenceDate"
+                presentation="licenceDate"
                   [(ngModel)]="constat.vehiculeInformationA.driverInformation.licenceDate"
                   locale="sl-SI" required 
-                ></ion-datetime>
-              </ng-template>
-            </ion-popover>
+                  ></ion-datetime>
+                </ng-template>
+              </ion-popover>
           </ion-item>
+          <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input placeholder="Enter driver Email" [(ngModel)]="constat.vehiculeInformationA.driverInformation.email"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Addresse</ion-label>
+            <ion-input placeholder="Enter driver Address" [(ngModel)]="constat.vehiculeInformationA.driverInformation.adress"></ion-input>
+          </ion-item>
+         
         </div>
-        <div *ngIf="slide==='Insured A'">
+        <div style="width: 100%;" *ngIf="slide==='Assuré A'">
           <h1>Assuré A</h1>
           <ion-item>
             <ion-label position="floating">Prénom</ion-label>
@@ -236,7 +240,7 @@
             <ion-label position="floating">Immatriculation</ion-label>
             <ion-input placeholder="Enter vehicule plate" [(ngModel)]="constat.vehiculeInformationA.vehicule.carPlate"></ion-input>
           </ion-item>
-          <ion-item>
+          <ion-item style="margin-bottom: 20px;">
             <ion-label position="floating">Direction</ion-label>
             <ion-input placeholder="Enter vehicule direction coming from ... going to ..." [(ngModel)]="constat.vehiculeInformationA.vehicule.direction"></ion-input>
           </ion-item>
@@ -244,17 +248,17 @@
         <div *ngIf="slide==='Damage A'">
           <h1>Dégats apparanets voiture A</h1>
           <ion-list>
-            <ion-radio-group [allowEmptySelection]="true" value="turtles" [(ngModel)]="constat.vehiculeInformationA.apperantDamage">
+            <ion-radio-group [allowEmptySelection]="true" value="chocs" [(ngModel)]="constat.vehiculeInformationA.apperantDamage">
               <ion-item>
                 <ion-label>coté avant droit</ion-label>
                 <ion-radio slot="end" value="pare à choc Ad"></ion-radio>
               </ion-item>
-          
+              
               <ion-item>
                 <ion-label> coté gauche</ion-label>
                 <ion-radio slot="end" value="pare à choc Ag"></ion-radio>
               </ion-item>
-          
+              
               <ion-item>
                 <ion-label> choc avant</ion-label>
                 <ion-radio slot="end" value="pare à choc AM"></ion-radio>
@@ -266,19 +270,19 @@
               </ion-item>
               <ion-item>
                 <ion-label>Arrière Droit</ion-label>
-                <ion-radio slot="end" value="cote droit avant"></ion-radio>
+                <ion-radio slot="end" value="cote droit arriére"></ion-radio>
               </ion-item>
               <ion-item>
                 <ion-label>Arrière </ion-label>
-                <ion-radio slot="end" value="cote droit avant"></ion-radio>
+                <ion-radio slot="end" value="cote arriére"></ion-radio>
               </ion-item>
               <ion-item>
                 <ion-label>Arrière gauche </ion-label>
-                <ion-radio slot="end" value="cote droit avant"></ion-radio>
+                <ion-radio slot="end" value="cote arrière gauche"></ion-radio>
               </ion-item>
               <ion-item>
                 <ion-label>coté gauche </ion-label>
-                <ion-radio slot="end" value="cote droit avant"></ion-radio>
+                <ion-radio slot="end" value="cote gauche "></ion-radio>
               </ion-item>
             </ion-radio-group>
           </ion-list>
@@ -289,19 +293,19 @@
           <img src="assets/icon/car choc.png" alt="car choc">
 
         </div>
-        <div *ngIf="slide==='Insurence company B'">
-          <ion-button id="open-modal" expand="block">Ajouter un témoin</ion-button>
+        <div *ngIf="slide==='Compagnie Assurance B'">
+          <ion-button id="open-modal2" expand="block">Ajouter un témoin</ion-button>
           <p>{{ message }}</p>
-          <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+          <ion-modal trigger="open-modal2" (willDismiss)="onWillDismiss2($event)">
             <ng-template>
               <ion-header>
                 <ion-toolbar>
                   <ion-buttons slot="start">
-                    <ion-button (click)="cancel()">Annuler</ion-button>
+                    <ion-button (click)="cancel2()">Annuler</ion-button>
                   </ion-buttons>
                   <ion-title>Welcome</ion-title>
                   <ion-buttons slot="end">
-                    <ion-button (click)="confirm()" [strong]="true">Confirmer</ion-button>
+                    <ion-button (click)="confirm2()" [strong]="true">Confirmer</ion-button>
                   </ion-buttons>
                 </ion-toolbar>
               </ion-header>
@@ -324,8 +328,8 @@
                   <ion-input placeholder="Enter witness Email" [(ngModel)]="witness.email"></ion-input>
                 </ion-item></ion-col>
                 <ion-col>
-                <ion-item>
-                  <ion-label position="floating">Addresse</ion-label>
+                  <ion-item>
+                    <ion-label position="floating">Addresse</ion-label>
                   <ion-input placeholder="Enter witness Address" [(ngModel)]="witness.address"></ion-input>
                 </ion-item></ion-col>
                 <ion-col>
@@ -360,31 +364,31 @@
             <ion-label position="floating">Agence</ion-label>
             <ion-input placeholder="Enter Agency Name" [(ngModel)]="constat.vehiculeInformationB.insurenceCompanyInformation.agencyName"></ion-input>
           </ion-item>
-          <ion-item >
+          <ion-item style="margin-top: 20px;">
             <ion-label>Date début</ion-label>
             <ion-input
               id="begingDateb"
               class="ion-text-end"
-            ></ion-input>
-            <ion-popover trigger="begingDateb" size="cover">
-              <ng-template>
+              ></ion-input>
+              <ion-popover trigger="begingDateb" size="cover">
+                <ng-template>
                 <ion-datetime
-                  presentation="begingDateb"
+                presentation="begingDateb"
                   [(ngModel)]="constat.vehiculeInformationB.insurenceCompanyInformation.begingDate"
                   locale="sl-SI" required 
                 ></ion-datetime>
               </ng-template>
             </ion-popover>
           </ion-item>
-          <ion-item>
+          <ion-item style="margin-top: 20px;">
             <ion-label>Date fin</ion-label>
-            <ion-input
-              id="endDateb"
-              class="ion-text-end"
+            <ion-input 
+            id="endDateb"
+            class="ion-text-end"
             ></ion-input>
-            <ion-popover trigger="endDateb" size="cover">
+            <ion-popover size="cover" side="top" alignment="center" style="--offset-y:-80px;" trigger="endDateb" >
               <ng-template>
-                <ion-datetime
+                <ion-datetime 
                   presentation="endDateb"
                   [(ngModel)]="constat.vehiculeInformationB.insurenceCompanyInformation.endDate"
                   locale="sl-SI" required 
@@ -393,7 +397,7 @@
             </ion-popover>
           </ion-item>
         </div>
-        <div *ngIf="slide==='Driver B'">
+        <div *ngIf="slide==='Conducteur B'">
           <h1>Identité du conducteur B</h1>
           <ion-item>
             <ion-label position="floating">Prénom</ion-label>
@@ -427,12 +431,12 @@
                   presentation="licenceDateb"
                   [(ngModel)]="constat.vehiculeInformationB.driverInformation.licenceDate"
                   locale="sl-SI" required 
-                ></ion-datetime>
-              </ng-template>
-            </ion-popover>
-          </ion-item>
+                  ></ion-datetime>
+                </ng-template>
+              </ion-popover>
+            </ion-item>
         </div>
-        <div *ngIf="slide==='Insured B'">
+        <div style="width: 100%;" *ngIf="slide==='Assuré B'">
           <h1>Assuré B</h1>
           <ion-item>
             <ion-label position="floating">Prénom</ion-label>
@@ -477,7 +481,7 @@
                 <ion-label>coté avant droit</ion-label>
                 <ion-radio slot="end" value="pare à choc Ad"></ion-radio>
               </ion-item>
-          
+              
               <ion-item>
                 <ion-label> coté gauche</ion-label>
                 <ion-radio slot="end" value="pare à choc Ag"></ion-radio>
@@ -517,7 +521,7 @@
           <img src="assets/icon/car choc.png" alt="car choc">
 
         </div>
-        <div *ngIf="slide==='Sketch'">
+        <div style="width: 100%;" *ngIf="slide==='Validation'">
           <div>
             <h2>Croquis de l'accident</h2>
             <canvas #canvas (touchstart)="startDrawing($event)" (touchmove)="moved($event)"></canvas>
@@ -537,7 +541,7 @@
             <ion-checkbox slot="start"></ion-checkbox>
             <ion-label>{{cir}}</ion-label>
           </ion-item>
-         
+          
           <div>
             <h2>Signature A</h2>
             <canvas #canvas1 (touchstart)="startDrawingSignatureA($event)" (touchmove)="movedSignatureA($event)"></canvas>
@@ -570,26 +574,27 @@
       </ion-slide>
     </ng-container>
   </ion-slides>
+</div>
 </ion-content>
 <ion-footer>
   <ion-toolbar>
     <div class="full-width flex align-items-center justify-content-space-between">
       <div *ngIf="currentSlideIndex<=10 && currentSlideIndex>0">
         <ion-button  color="dark" strong shape="round" (click)="onBack()">
-          <span>Back</span>
+          <span>Retour</span>
         </ion-button>
       </div>
       <div *ngIf="currentSlideIndex<10 && currentSlideIndex>=0">
         <ion-button color="primary" strong shape="round" (click)="onNext()" slot="end">
-          <span>Next</span>
+          <span>Suivant</span>
         </ion-button>
       </div>
     </div>
     <div *ngIf="isEnding==true">
       <ion-button color="primary" expand="block" (click)="addConstat()" strong shape="round">
-        <span>Submit</span>
+        <span>Envoyer</span>
       </ion-button>
     </div>
     
-</ion-toolbar>
+  </ion-toolbar>
 </ion-footer>

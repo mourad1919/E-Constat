@@ -5,7 +5,7 @@ import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-reset-password',
   templateUrl: './reset-password.page.html',
-  styleUrls: ['./reset-password.page.scss'],
+  styleUrls: ['./reset-password.page.css'],
 })
 export class ResetPasswordPage implements OnInit {
   password:string="";

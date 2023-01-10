@@ -4,7 +4,7 @@ import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.page.html',
-  styleUrls: ['./forgot-password.page.scss'],
+  styleUrls: ['./forgot-password.page.css'],
 })
 export class ForgotPasswordPage implements OnInit {
   username:string="";

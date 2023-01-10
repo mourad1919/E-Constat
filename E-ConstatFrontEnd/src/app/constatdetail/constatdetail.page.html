@@ -81,7 +81,7 @@
       </tr>
       <tr class="details">
         <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
-          Insurence Agency Name
+          Agence
         </td>
 
         <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
@@ -241,126 +241,216 @@
           {{constat.circumstances}}
         </td>
       </tr>
-      <tr class="details">
-        <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
-         observation 
+      <tr>
+        <td class="title"
+          style="padding: 5px;vertical-align: top;padding-bottom: 20px;font-size: 45px;line-height: 45px;color: #333;">
+          <img alt="Constat signature" src='{{constat.vehiculeInformationA.signature}}'  style="width:100%; max-width:300px;"/>
         </td>
 
-        <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
-          {{constat.vehiculeInformationA.observation}}
-        </td>
-      </tr>
 
-
-      <tr class="heading">
-        <td style="padding: 5px;vertical-align: top;background: #eee;border-bottom: 1px solid #ddd;font-weight: bold;">
-          Vehicule Information B
-        </td>
-
-        <td
-          style="padding: 5px;vertical-align: top;text-align: right;background: #eee;border-bottom: 1px solid #ddd;font-weight: bold;">
-          
-        </td>
-      </tr>
-
-
-      <tr class="details">
-        <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
-          Insurence Company Name
-        </td>
-
-        <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
-          {{constat.vehiculeInformationB.insurenceCompanyInformation.insurenceCompanyName}}
-        </td>
-      </tr>
-      <tr class="details">
-        <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
-          Insurence Company Name
-        </td>
-
-        <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
-          {{constat.vehiculeInformationB.insurenceCompanyInformation.insuranceContractNumber}}
-        </td>
-      </tr>
-      <tr class="details">
-        <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
-          Insurence Company Name
-        </td>
-
-        <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
-          {{constat.vehiculeInformationB.insurenceCompanyInformation.agencyName}}
-        </td>
-      </tr>
-      <tr class="details">
-        <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
-          Insurence Company Name
-        </td>
-
-        <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
-          {{constat.vehiculeInformationB.insurenceCompanyInformation.begingDate}}
-        </td>
-      </tr>
-      <tr class="details">
-        <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
-          Insurence Company Name
-        </td>
-
-        <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
-          {{constat.vehiculeInformationB.insurenceCompanyInformation.endDate}}
-        </td>
-      </tr>
-      <tr class="details">
-        <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
-          Insurence Company Name
-        </td>
-
-        <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
-          {{constat.vehiculeInformationA.insurenceCompanyInformation.insurenceCompanyName}}
-        </td>
-      </tr>
-      <tr class="details">
-        <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
-          Insurence Company Name
-        </td>
-
-        <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
-          {{constat.vehiculeInformationA.insurenceCompanyInformation.insurenceCompanyName}}
-        </td>
-      </tr>
-      <tr class="details">
-        <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
-          Insurence Company Name
-        </td>
-
-        <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
-          {{constat.vehiculeInformationA.insurenceCompanyInformation.insurenceCompanyName}}
-        </td>
-      </tr>
-      <tr class="details">
-        <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
-          Insurence Company Name
-        </td>
-
-        <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
-          {{constat.vehiculeInformationA.insurenceCompanyInformation.insurenceCompanyName}}
-        </td>
-      </tr>
-      <tr class="details">
-        <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
-          Insurence Company Name
-        </td>
-
-        <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
-          {{constat.vehiculeInformationA.insurenceCompanyInformation.insurenceCompanyName}}
-        </td>
-      </tr>
+        <tr class="heading">
+          <td style="padding: 5px;vertical-align: top;background: #eee;border-bottom: 1px solid #ddd;font-weight: bold;">
+            Vehicule Information B
+          </td>
+  
+          <td
+            style="padding: 5px;vertical-align: top;text-align: right;background: #eee;border-bottom: 1px solid #ddd;font-weight: bold;">
+            
+          </td>
+        </tr>
+  
+        <tr class="details">
+          <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+            Véhicule assuré par
+          </td>
+  
+          <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+            {{constat.vehiculeInformationB.insurenceCompanyInformation.insurenceCompanyName}}
+          </td>
+        </tr>
+        <tr class="details">
+          <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+            Police d'Assurance N°
+          </td>
+  
+          <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+            {{constat.vehiculeInformationB.insurenceCompanyInformation.insuranceContractNumber}}
+          </td>
+        </tr>
+        <tr class="details">
+          <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+            Agence
+          </td>
+  
+          <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+            {{constat.vehiculeInformationB.insurenceCompanyInformation.agencyName}}
+          </td>
+        </tr>
+        <tr class="details">
+          <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+            Attestaion valable du
+          </td>
+  
+          <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+            {{constat.vehiculeInformationB.insurenceCompanyInformation.begingDate}}
+          </td>
+        </tr>
+        <tr class="details">
+          <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+            au 
+          </td>
+  
+          <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+            {{constat.vehiculeInformationB.insurenceCompanyInformation.endDate}}
+          </td>
+        </tr>
+        <tr class="details">
+          <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+            Nom du conducteur
+          </td>
+  
+          <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+            {{constat.vehiculeInformationB.driverInformation.lastname}}
+          </td>
+        </tr>
+        <tr class="details">
+          <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+            Prénom
+          </td>
+  
+          <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+            {{constat.vehiculeInformationB.driverInformation.firstname}}
+          </td>
+        </tr>
+        <tr class="details">
+          <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+            Adresse
+          </td>
+  
+          <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+            {{constat.vehiculeInformationB.driverInformation.adress}}
+          </td>
+        </tr>
+        <tr class="details">
+          <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+            Permis du conduire N°
+          </td>
+  
+          <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+            {{constat.vehiculeInformationB.driverInformation.licenceNumber}}
+          </td>
+        </tr>
+        <tr class="details">
+          <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+            Délivré le
+          </td>
+  
+          <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+            {{constat.vehiculeInformationB.driverInformation.licenceDate}}
+          </td>
+        </tr>
+        <tr class="details">
+          <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+            Nom Assuré
+          </td>
+  
+          <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+            {{constat.vehiculeInformationB.insuredInforamation.lastname}}
+          </td>
+        </tr>
+        <tr class="details">
+          <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+            Prénom
+          </td>
+  
+          <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+            {{constat.vehiculeInformationB.insuredInforamation.firstname}}
+          </td>
+        </tr>
+        <tr class="details">
+          <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+            Adresse
+          </td>
+  
+          <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+            {{constat.vehiculeInformationB.insuredInforamation.adress}}
+          </td>
+        </tr>
+        <tr class="details">
+          <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+            tél
+          </td>
+  
+          <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+            {{constat.vehiculeInformationB.insuredInforamation.phone}}
+          </td>
+        </tr>
+        <tr class="details">
+          <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+            Identité du véhicule(Marque , Type)
+          </td>
+  
+          <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+            {{constat.vehiculeInformationB.vehicule.brand}},{{constat.vehiculeInformationA.vehicule.type}}
+          </td>
+        </tr>
+        <tr class="details">
+          <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+           Immatriculation
+          </td>
+  
+          <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+            {{constat.vehiculeInformationB.vehicule.carPlate}}
+          </td>
+        </tr>
+        <tr class="details">
+          <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+           Sens suivi 
+          </td>
+  
+          <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+            {{constat.vehiculeInformationB.vehicule.direction}}
+          </td>
+        </tr>
+        <tr class="details">
+          <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+           Choc Inital 
+          </td>
+  
+          <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+            {{constat.vehiculeInformationB.apperantDamage}}
+          </td>
+        </tr>
+        <tr class="details">
+          <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+           observation 
+          </td>
+  
+          <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+            {{constat.vehiculeInformationB.observation}}
+          </td>
+        </tr>
+        <tr class="details">
+          <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
+           Circonstances
+          </td>
+  
+          <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
+            {{constat.circumstances}}
+          </td>
+        </tr>
+        <tr>
+          <td class="title"
+            style="padding: 5px;vertical-align: top;padding-bottom: 20px;font-size: 45px;line-height: 45px;color: #333;">
+            <img alt="Constat signature" src='{{constat.vehiculeInformationB.signature}}'  style="width:100%; max-width:300px;"/>
+          </td>
     </table>
   </div>
 </ion-content>
 <ion-footer (click)="downloadInvoice()">
   <ion-toolbar color="dark" class="ion-padding-horizontal">
     <div class="ion-text-center">
-      <h4 class="ion-no-margin">Download Constat</h4>
+      <h4 class="ion-no-margin">Télécharger Constat </h4>
     </div>
   </ion-toolbar>
 </ion-footer>

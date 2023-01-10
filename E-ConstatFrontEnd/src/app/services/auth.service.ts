@@ -11,7 +11,7 @@ import { map } from "rxjs/operators";
 })
 export class AuthService {
 
-  host:string ="http://192.168.1.3:8081/user"
+  host:string ="http://192.168.33.57:8081/user"
   //host:string ="http://localhost:8081/user";
   token : string | null;
   public loggedUser:string;
