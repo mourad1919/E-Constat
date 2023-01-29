@@ -3,6 +3,14 @@
     <ion-title>
       2 smartphones
     </ion-title>
+    <ion-item>
+      <ion-button  slot="start" [routerLink]="['/welcome']">Retour</ion-button>
+      <div slot="end" style="display: flex;" class="test" >
+        <ion-icon  name="person" style="margin-right: 2px;" ></ion-icon>
+        <ion-button color="danger" (click)="logoutAction2()" >Déconnexion</ion-button>
+
+        </div>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 <div class="scan-box" [style.visibility]="!content_visibility" ></div>

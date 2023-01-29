@@ -2,12 +2,13 @@
     <ion-toolbar >
       <ion-item>
         <ion-button  slot="start" [routerLink]="['/welcome']">Retour</ion-button>
-        <div slot="end" style="display: flex;" class="test" (click)="configureAccount()">
+        <div slot="end" style="display: flex;" class="test" >
         <ion-icon  name="person" style="margin-right: 2px;" ></ion-icon>
-        <ion-label  >{{username}}</ion-label>
-        <ion-button  color="danger" (click)="logoutAction()" >Déconnexion</ion-button>
+        <ion-label (click)="configureAccount()" >{{username}}</ion-label>
+        <ion-button color="danger" (click)="logoutAction()" >Déconnexion</ion-button>
 
         </div>
+        
       </ion-item>
     </ion-toolbar>
   </ion-header>
@@ -537,11 +538,18 @@
             </ion-grid>
           </div>
           
-          <ion-item *ngFor="let cir of circumstances">
-            <ion-checkbox slot="start"></ion-checkbox>
-            <ion-label>{{cir}}</ion-label>
-          </ion-item>
           
+          <ion-radio-group [allowEmptySelection]="true" value="turtles" [(ngModel)]="constat.vehiculeInformationA.circumstances">
+
+            <ion-item>
+              <ion-label>En Stationnement </ion-label>
+              <ion-radio slot="start" value="EN_STATIONNEMENT"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>QUITTAI UN STATIONNEMENT </ion-label>
+              <ion-radio slot="start" value="QUITTAI_UN_STATIONNEMENT"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
           <div>
             <h2>Signature A</h2>
             <canvas #canvas1 (touchstart)="startDrawingSignatureA($event)" (touchmove)="movedSignatureA($event)"></canvas>
@@ -556,6 +564,18 @@
               </ion-row>
             </ion-grid>
           </div>
+       
+          <ion-radio-group [allowEmptySelection]="true" value="turtles" [(ngModel)]="constat.vehiculeInformationB.circumstances">
+
+            <ion-item>
+              <ion-label>En Stationnement </ion-label>
+              <ion-radio slot="start" value="EN_STATIONNEMENT"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>QUITTAI UN STATIONNEMENT </ion-label>
+              <ion-radio slot="start" value="QUITTAI_UN_STATIONNEMENT"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
           <div>
             <h2>Signature B</h2>
             <canvas #canvas2 (touchstart)="startDrawingSignatureB($event)" (touchmove)="movedSignatureB($event)"></canvas>

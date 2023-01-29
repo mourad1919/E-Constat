@@ -59,7 +59,7 @@ public class UserController {
     public void processForgetPassword(@PathVariable String username){
         User user=userService.getUserByUsername(username);
         String token= RandomString.make(30);
-        String link="http://192.168.33.57:8100/reset-password?token="+token;
+        String link="http://192.168.1.4:8100/reset-password?token="+token;
         String subject="Forgot password";
         String text="<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
                 "<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" style=\"width:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;padding:0;Margin:0\"> \n" +

@@ -35,7 +35,7 @@ export class Tab1Page implements OnInit {
   user:User=new User();//** */
   username:string=localStorage.getItem('username');//** */
   circumstances:string[]=['EN_STATIONNEMENT','QUITTAI_UN_STATIONNEMENT'];
-  message = 'You can add witness anytime by clicking this button';
+  message = 'Vous pouvez ajouter un témoin en cliquant sur ce bouton.';
   name: string;
   constat:Constat;
   witness:Witness;
@@ -247,9 +247,9 @@ export class Tab1Page implements OnInit {
   //** */
   async configureAccount(){
     const alert = await this.alertController.create({
-      header: 'Please enter your info',
+      header: 'Veuillez entrer vos renseignements',
       buttons: [{
-        text:'Confirm',
+        text:'Confirmer',
         handler:data=>{
           this.user.firstname=data[0];
           this.user.lastname=data[1];
@@ -258,6 +258,7 @@ export class Tab1Page implements OnInit {
           console.log(this.user);
           this.serviceUser.updateuser(this.user).subscribe((data)=>{
             console.log(data);
+            this.serviceAuth.logout();
           })
         }
       }],
@@ -285,9 +286,11 @@ export class Tab1Page implements OnInit {
         
         
       ],
+      
     });
-
+   // 
     await alert.present();
+    
   }
   //** */
 }

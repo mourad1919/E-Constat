@@ -22,6 +22,8 @@ public class VehiculeInformation {
     private InsuredInforamation insuredInforamation;
     @OneToOne(cascade = CascadeType.ALL)
     private Vehicule vehicule;
+    @Enumerated(EnumType.STRING)
+    private Circumstances circumstances;
     private String apperantDamage;
     private String observation;
     private String signature;

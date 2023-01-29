@@ -12,4 +12,5 @@ export class VehiculeInformation{
     apperantDamage:              string;
     observation:                 string;
     signature:                   string;
+    circumstances: string;
 }

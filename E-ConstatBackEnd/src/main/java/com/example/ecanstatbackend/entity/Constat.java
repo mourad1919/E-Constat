@@ -28,8 +28,7 @@ public class Constat {
     private VehiculeInformation vehiculeInformationA;
     @OneToOne(cascade = CascadeType.ALL)
     private VehiculeInformation vehiculeInformationB;
-    @Enumerated(EnumType.STRING)
-    private Circumstances circumstances;
+
     private String sketch;
 
 }

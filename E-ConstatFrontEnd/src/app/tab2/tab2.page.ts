@@ -15,6 +15,9 @@ import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 import { AfterViewInit, ElementRef } from '@angular/core';
 import SignaturePad from 'signature_pad';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { UserService } from '../services/user.service';
+import { User } from '../model/user';
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
@@ -37,6 +40,8 @@ export class Tab2Page {
   isEnding:boolean=false;
   currentSlide:string;
   slides:string[];
+  user:User=new User();//** */
+  username:string=localStorage.getItem('username');
   circumstances:string[]=['EN_STATIONNEMENT','QUITTAI_UN_STATIONNEMENT'];
   message = 'Vous pouvez ajouter un témoin à tout moment en cliquant sur ce bouton';
   name: string;
@@ -44,7 +49,7 @@ export class Tab2Page {
   witness:Witness;
   witnesses:Witness[]=[];
   vehiculeInforamtion:VehiculeInformation=new VehiculeInformation();
-  constructor(private router:Router,private serviceConstat:ConstatService,private alertController: AlertController) {}
+  constructor(private router:Router,private alertController: AlertController,private serviceUser:UserService, private serviceConstat:ConstatService,private serviceAuth:AuthService) {}
   public slidesOpts={
     allowTouchMove:false,
     autoHeight:true,
@@ -193,6 +198,9 @@ export class Tab2Page {
   ngOnDestroy(): void {
       this.stopScan();
   }
+  logoutAction2(){
+    this.serviceAuth.logout();
+  }
   
   async onHurtPeopleOn(){
     if(this.constat.hurtPeople===true){
@@ -276,3 +284,10 @@ export class Tab2Page {
     });
   }
 }
+
+
+
+
+
+
+

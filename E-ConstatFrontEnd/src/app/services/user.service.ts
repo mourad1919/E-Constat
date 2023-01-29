@@ -11,7 +11,7 @@ import { RoleToUser } from "../model/roletouser";
   providedIn: 'root'
 })
 export class UserService {
-  host:string ="http://192.168.33.57:8081/user";
+  host:string ="http://192.168.1.4:8081/user";
   //host:string ="http://localhost:8081/user";
   constructor(private http:HttpClient) { }
   addUser(user:User):Observable<User>{

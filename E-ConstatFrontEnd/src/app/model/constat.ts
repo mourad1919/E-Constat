@@ -10,6 +10,5 @@ export class Constat {
     witness:                     Witness[];
     vehiculeInformationA:        VehiculeInformation;
     vehiculeInformationB:        VehiculeInformation;
-    circumstances:               string;
     sketch:                      string;
 }
