@@ -7,11 +7,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import { PDFGenerator } from '@ionic-native/pdf-generator/ngx';
+import { AuthInterceptor } from './services/auth.interceptor';
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(),
      AppRoutingModule,HttpClientModule,QRCodeModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },PDFGenerator],
+  providers: [ AuthInterceptor, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },PDFGenerator],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

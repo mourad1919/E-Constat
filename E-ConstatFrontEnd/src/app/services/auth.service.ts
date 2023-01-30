@@ -5,23 +5,32 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 import { User } from "../model/user";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators"; 
+import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  host:string ="http://192.168.1.4:8081/user"
+  host:string =environment.host+"user";
   //host:string ="http://localhost:8081/user";
   token : string | null;
   public loggedUser:string;
   public isloggedIn: boolean = false;
   public roles:string[];
   private helper = new JwtHelperService();
+   headers :Headers;
+  constructor(private router:Router , private http : HttpClient){
 
+    const auth_token=localStorage.getItem('access_token');
+   this.headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${auth_token}`
+    })
+  
+  }
 
-  constructor(private router:Router , private http : HttpClient){}
-
+  
 
   isLoggedIn(){
     return !!localStorage.getItem('access_token');;

@@ -18,9 +18,7 @@ public class ECanstatBackEndApplication {
     public static void main(String[] args) {
         SpringApplication.run(ECanstatBackEndApplication.class, args);
     }
-    @Bean
-    PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();}
+
 
 
 

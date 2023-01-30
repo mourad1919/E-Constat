@@ -22,6 +22,26 @@ public class Constat {
     private String accidentSite;
     private boolean hurtPeople;
     private boolean materialDamageOtherThenAorB;
+
+    @Column(name = "vld")
+    private Integer vld;
+
+    @Column(name = "date_demande")
+    private LocalDateTime dateDemande;
+
+    @Column(name = "init_by")
+    private String initBy;
+
+    @Column(name = "last_edit")
+    private LocalDateTime dateEdit;
+
+    @Column(name = "edit_by")
+    private String editBy;
+
+    @Column(name = "observation")
+    private String observation;
+
+
     @OneToMany(cascade = CascadeType.ALL)
     private List<Witness> witness;
     @OneToOne(cascade = CascadeType.ALL)

@@ -2,8 +2,10 @@ package com.example.ecanstatbackend.entity;
 
 import com.sun.istack.NotNull;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
+import java.util.Optional;
 
 @Getter
 @Setter
@@ -26,4 +28,8 @@ public class User {
     @ManyToOne
     private Role role;
 
+
+    public User(String subject, Optional<? extends GrantedAuthority> first) {
+        this.username=subject;
+    }
 }

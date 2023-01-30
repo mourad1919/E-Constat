@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Constat } from '../model/constat';
 import { VehiculeInformation } from '../model/vehicule-information';
 
@@ -8,14 +9,18 @@ import { VehiculeInformation } from '../model/vehicule-information';
   providedIn: 'root'
 })
 export class ConstatService {
-  host:string="http://192.168.1.4:8081/constat";
+  
+  host:string =environment.host+"constat";
   //host:string ="http://localhost:8081/constat";
   constructor(private http:HttpClient) { }
   sendEmail(to:string,id:number){
     return this.http.get<any>(this.host+"/sendConstatdetailsEmail/"+to+"/"+id);
   }
   addConstat(c:Constat):Observable<number>{
-    return this.http.post<number>(this.host+"/saveconstat",c);
+    return this.http.post<number>(this.host+"/saveconstat",c,{headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ` + localStorage.getItem('access_token')
+    }});
   }
   getAllConstat():Observable<Constat[]>{
     return this.http.get<Constat[]>(this.host+"/getallconstats");

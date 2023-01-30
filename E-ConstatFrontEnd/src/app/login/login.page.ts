@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { User } from '../model/user';
 import { AuthService } from '../services/auth.service';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ import { AuthService } from '../services/auth.service';
 export class LoginPage implements OnInit {
   user:User=new User();
   err:number=0;
-  constructor(private authService:AuthService,private router:Router,private alertController:AlertController) { }
+  constructor(private loadingCtrl: LoadingController,private authService:AuthService,private router:Router,private alertController:AlertController) { }
 
   ngOnInit() {
   }
@@ -29,13 +30,25 @@ export class LoginPage implements OnInit {
     }
     
   }
-  onLoggedin()
+
+  async showLoading() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Connexion en cours...',
+    });
+
+    loading.present();
+  }
+ async onLoggedin()
   {
-    console.log(this.err)
+    const loading =  await this.loadingCtrl.create({
+      message: 'Connexion en cours...',
+    });
+
+    loading.present();
     this.authService.login(this.user.username,this.user.password).subscribe((data)=> {
       let jwToken = data.body.access_token;
       this.authService.saveToken(jwToken || '{}');
-      
+      loading.dismiss();
       if(this.authService.isAdmin()){
         this.router.navigate(['/admin']); 
       }else {

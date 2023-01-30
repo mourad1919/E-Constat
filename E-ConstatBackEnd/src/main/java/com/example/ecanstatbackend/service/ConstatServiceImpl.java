@@ -5,11 +5,13 @@ import com.example.ecanstatbackend.entity.Constat;
 import com.example.ecanstatbackend.entity.VehiculeInformation;
 import com.example.ecanstatbackend.repository.ConstatRepository;
 import com.example.ecanstatbackend.repository.VehiculeInformationRepository;
+import com.example.ecanstatbackend.security.SecurityUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -21,8 +23,12 @@ public class ConstatServiceImpl implements ConstatService{
     private final VehiculeInformationRepository vehiculeInformationRepository;
     @Override
     public int saveConstat(Constat c) {
-        constatRepository.save(c);
-        constatRepository.flush();
+
+        c.setDateDemande(LocalDateTime.now());
+
+        if (SecurityUtils.getCurrentUserLogin().isPresent())
+        c.setInitBy(SecurityUtils.getCurrentUserLogin().get());
+        c=constatRepository.save(c);
         return c.getId();
     }
 
