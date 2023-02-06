@@ -10,7 +10,7 @@ import { DriverInformation } from '../model/driver-information';
 import {InsuredInformation} from '../model/insured-inforamation';
 import {Vehicule} from '../model/vehicule';
 import { ConstatService } from '../services/constat.service';
-
+import * as L from 'leaflet';
 import SignaturePad from 'signature_pad';
 import { Router } from '@angular/router';
 import { User } from '../model/user';
@@ -23,6 +23,18 @@ import { UserService } from '../services/user.service';
   styleUrls: ['tab1.page.css']
 })
 export class Tab1Page implements OnInit {
+  accidentSite:string;
+  map:L.map;
+  markerIcon = {
+    icon: L.icon({
+      iconSize: [28, 44],
+      iconAnchor: [10, 41],
+      popupAnchor: [2, -40],
+      // specify the path here
+      iconUrl: "https://unpkg.com/leaflet@1.4.0/dist/images/marker-icon.png",
+      shadowUrl: "https://unpkg.com/leaflet@1.4.0/dist/images/marker-shadow.png"
+    })
+  };
   @ViewChild(IonModal) modal: IonModal;
   @ViewChild(IonModal) modal2: IonModal;
   @ViewChild(IonSlides,{static:false}) ionSlides:IonSlides;
@@ -41,8 +53,8 @@ export class Tab1Page implements OnInit {
   witness:Witness;
   witnesses:Witness[]=[];
   currentSlideIndex:number=0;
-  slide1=['Accident','Compagnie Assurance A','Conducteur A','Assuré A'];
-  slide2=['Damage A','Compagnie Assurance B','Conducteur B','Assuré B'];
+  slide1=['Accident','Assuré A','Assurance','Conducteur'];
+  slide2=['Damage A','Assuré B','Assurance B','Conducteur B'];
   slide3=['Damage B','Validation'];
   constructor(private router:Router,private alertController: AlertController,private serviceUser:UserService, private serviceConstat:ConstatService,private serviceAuth:AuthService) {}
   public slidesOpts={
@@ -55,13 +67,33 @@ export class Tab1Page implements OnInit {
   }
   //** */
   buildSlides(){
-    const slides1=['Accident','Compagnie Assurance A','Conducteur A','Assuré A','Damage A','Compagnie Assurance B','Conducteur B','Assuré B','Damage B','Validation'];
+    const slides1=['Accident','Assuré A','Assurance','Conducteur','Damage A','Assuré B','Assurance B','Conducteur B','Damage B','Validation'];
     
     this.currentSlide=this.slide1[0];
     this.slides=this.slide1;
     this.slides1=slides1;
   }
+  ionViewDidEnter(){
+    this.map=L.map('mapId').setView([36.779799,10.187136],7);
+    this.map.scrollWheelZoom.enabled();
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+      attribution:
+      '&copy; <a href=https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(this.map);
+    let marker;
+    this.map.on("click",e=>{
+      if(marker){
+        this.map.removeLayer(marker);
+      }
+      console.log(e.latlng);
+      marker=L.marker([e.latlng.lat,e.latlng.lng],this.markerIcon).addTo(this.map);
+      this.accidentSite=e.latlng.lat+","+e.latlng.lng
+      console.log(this.accidentSite);
+      this.constat.accidentSite=this.accidentSite;
+    })
+  }
   ngOnInit(): void {
+    
     this.serviceUser.getuser(this.username).subscribe((data)=>this.user=data);//** */
     this.currentSlideIndex=0;
     this.buildSlides();
@@ -97,7 +129,7 @@ export class Tab1Page implements OnInit {
       const alert = await this.alertController.create({
         header: 'Alert',
         subHeader: 'Important message',
-        message: 'If people are injured please call the police 197 or 196',
+        message: 'Si des personnes sont blessées, veuillez appeler la police au 197 ou au 196.',
         buttons: ['OK'],
       });
   
@@ -161,11 +193,18 @@ export class Tab1Page implements OnInit {
   }
   addConstat(){
     //console.log(JSON.stringify(this.constat));
+   if(typeof this.constat.sketch === 'undefined'){
+      console.log("Ajouter un croquis pour passer à autre chose")
+   }
+   else{
     this.serviceConstat.addConstat(this.constat).subscribe((data)=>{
       console.log(data);
       this.router.navigateByUrl("/constatdetail/"+data);
       
     })
+    console.log("clear")
+   }
+    
   }
   
   //signature pad
@@ -293,4 +332,8 @@ export class Tab1Page implements OnInit {
     
   }
   //** */
+
+
+  //**MAP */
+  
 }

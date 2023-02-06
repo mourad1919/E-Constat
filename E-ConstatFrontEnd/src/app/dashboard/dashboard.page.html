@@ -36,14 +36,14 @@
         </ion-buttons>
         <ion-icon name="person" slot="end"></ion-icon>
         <ion-label slot="end">{{username}}</ion-label>
-        <ion-button (click)="logoutAction()" slot="end">Log Out</ion-button>
+        <ion-button (click)="logoutAction()" slot="end">Déconnexion</ion-button>
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding">
       <ion-header [translucent]="true">
         <ion-toolbar>
           <ion-title>
-            Dashboard
+            
           </ion-title>
         </ion-toolbar>
       </ion-header>
@@ -52,7 +52,7 @@
         <div class="ion-padding">
           <ion-card>
             <ion-card-header>
-              Bar Chart
+              
             </ion-card-header>
             <ion-card-content>
               <canvas #barCanvas style="position: relative; height:20vh; width:40vw"></canvas>

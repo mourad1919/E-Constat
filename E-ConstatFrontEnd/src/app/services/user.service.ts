@@ -1,6 +1,5 @@
 import { HttpClient, HttpHandler, HttpHeaders, HttpParams, HttpResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Router } from "@angular/router";
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { User } from "../model/user";
 import { Observable } from "rxjs";
@@ -37,7 +36,7 @@ export class UserService {
     roleToUser.rolename="ROLE_USER";
     return this.http.post(this.host+"/saveuser",roleToUser);
   }
-  forgotPasswor(username:string){
+  forgotPassword(username:string){
     return this.http.post(this.host+"/forgot_password/"+username,null);
   }
   resetPassword(password:string,token:string):Observable<string>{

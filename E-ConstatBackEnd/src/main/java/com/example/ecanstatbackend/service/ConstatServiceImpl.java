@@ -26,8 +26,8 @@ public class ConstatServiceImpl implements ConstatService{
 
         c.setDateDemande(LocalDateTime.now());
 
-        if (SecurityUtils.getCurrentUserLogin().isPresent())
-        c.setInitBy(SecurityUtils.getCurrentUserLogin().get());
+       /* if (SecurityUtils.getCurrentUserLogin().isPresent())//
+        c.setInitBy(SecurityUtils.getCurrentUserLogin().get());*/
         c=constatRepository.save(c);
         return c.getId();
     }

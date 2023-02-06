@@ -13,7 +13,7 @@ export class ForgotPasswordPage implements OnInit {
   ngOnInit() {
   }
   forgotPassword(){
-    this.userService.forgotPasswor(this.username).subscribe(()=>{
+    this.userService.forgotPassword(this.username).subscribe(()=>{
     });
   }
 }

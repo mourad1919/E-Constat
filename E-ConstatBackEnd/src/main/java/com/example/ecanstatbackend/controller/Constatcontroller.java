@@ -18,6 +18,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/constat")
+@CrossOrigin(origins = "*")
 public class Constatcontroller {
     private final ConstatService constatService;
     private final EmailSender emailSender;
@@ -37,6 +38,7 @@ public class Constatcontroller {
     public List<Constat> getAllConstats(){
         return constatService.getAllConstats();
     }
+
     @DeleteMapping("/deleteconstat/{id}")
     public void deleteConstat(@PathVariable int id){
         constatService.deleteConstat(id);

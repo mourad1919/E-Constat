@@ -46,14 +46,15 @@ export class LoginPage implements OnInit {
 
     loading.present();
     this.authService.login(this.user.username,this.user.password).subscribe((data)=> {
-      let jwToken = data.body.access_token;
+      
+      let jwToken = data.body.id_token;
       this.authService.saveToken(jwToken || '{}');
       loading.dismiss();
       if(this.authService.isAdmin()){
         this.router.navigate(['/admin']); 
       }else {
         this.router.navigate(['/welcome']); 
-      }            
+      }         
     },(err)=>{ 
       this.err=1;
       this.loginfail();

@@ -10,10 +10,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,7 +32,7 @@ public class AuthenticateResource {
 
     @PostMapping("/authenticate")
     public ResponseEntity<JWTToken> authorize( @RequestBody LoginVM loginVM) {
-        //  log.info("password {} decrypt {}",loginVM.getPassword(),decrypt( loginVM.getPassword()));
+          log.info("authenticate");
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
                 loginVM.getUsername().toLowerCase(),
                 loginVM.getPassword()

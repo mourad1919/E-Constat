@@ -6,13 +6,14 @@ import { User } from "../model/user";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators"; 
 import { environment } from "src/environments/environment";
+import { LoginVM } from "../model/LoginVM";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  host:string =environment.host+"user";
+  host:string =environment.host+"api";
   //host:string ="http://localhost:8081/user";
   token : string | null;
   public loggedUser:string;
@@ -37,12 +38,17 @@ export class AuthService {
   }
 
     login(username: string, password: string):Observable<any> {
-      const body = new HttpParams()
+      /*const body = new HttpParams()
         .set(`username`, username)
         .set(`password`, password);
-      const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+      const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });*/
+      const loginVM:LoginVM=new LoginVM();
+      loginVM.username=username;
+      loginVM.password=password;
+      console.log(loginVM);
 
-      return this.http.post(  this.host+"/login", body.toString(), { headers, observe: 'response' })
+
+      return this.http.post(  this.host+"/authenticate", loginVM,{observe:'response'});
       
     }
 
@@ -63,8 +69,8 @@ export class AuthService {
         return;
       const decodedToken = this.helper.decodeToken(this.token);
       console.log(decodedToken);
-      this.roles = decodedToken.role;
-      localStorage.setItem('role',decodedToken.role);
+      this.roles = decodedToken.auth;
+      localStorage.setItem('role',decodedToken.auth);
       localStorage.setItem('username',decodedToken.sub);
       this.loggedUser = decodedToken.sub;
     }

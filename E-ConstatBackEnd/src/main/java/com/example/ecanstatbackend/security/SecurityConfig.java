@@ -18,6 +18,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationFilter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.header.writers.ReferrerPolicyHeaderWriter;
 import org.springframework.web.cors.CorsConfiguration;
@@ -54,6 +55,8 @@ public class SecurityConfig  {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        //http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
+
         // @formatter:off
         http
                 .csrf()
@@ -88,6 +91,7 @@ public class SecurityConfig  {
                 .antMatchers("/management/info").permitAll()
                 .antMatchers("/management/prometheus").permitAll()
                 .antMatchers("/constat/**").authenticated()
+                .antMatchers("/user/forgot_password/**").permitAll()
                 .antMatchers("/user/**").authenticated()
                 .antMatchers("/reset_password/**").permitAll()
 
